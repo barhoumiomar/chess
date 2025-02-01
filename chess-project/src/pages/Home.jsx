@@ -2,7 +2,6 @@ import React from "react";
 
 const Home = () => {
   return (
-    
     <div style={styles.container}>
       <div style={styles.mainContent}>
         <h1 style={styles.title}>Welcome to Chess Learning!</h1>
@@ -11,7 +10,7 @@ const Home = () => {
         {/* Chessboard Image */}
         <div style={styles.imageContainer}>
           <img
-            src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80"
+            src="https://www.original-political-cartoon.com/media/filer_public_thumbnails/filer_public/2020/06/27/illingworth_chess.jpg__600x400_q85.jpg"
             alt="Chessboard"
             style={styles.image}
           />
@@ -31,40 +30,73 @@ const Home = () => {
         {/* Chess Series Section */}
         <div style={styles.section}>
           <h2 style={styles.sectionTitle}>Chess Series</h2>
-          <p style={styles.sectionText}>Explore our curated series to deepen your chess knowledge and sharpen your skills.</p>
-          <div style={styles.seriesContainer}>
-            <div style={styles.seriesCard}> 
-              <img
-                src="https://images.unsplash.com/photo-1505762299457-5a2c97a8fbe9"
-                alt="Tutorial Series"
-                style={styles.seriesImage}
-              />
-              <h3 style={styles.seriesTitle}>Chess Basics Series</h3>
-              <p style={styles.seriesDescription}>Learn the fundamentals of chess, from rules to strategies, in our beginner-friendly series.</p>
-              <a href="/series/basics" style={styles.seriesLink}>Start Series</a>
-            </div>
-
-            <div style={styles.seriesCard}>
-              <img
-                src="https://images.unsplash.com/photo-1517243130814-7dbfdfddc7b1"
-                alt="Expert Games Series"
-                style={styles.seriesImage}
-              />
-              <h3 style={styles.seriesTitle}>Master Game Analysis</h3>
-              <p style={styles.seriesDescription}>Dive into legendary chess games and understand the thought process of grandmasters.</p>
-              <a href="/series/master-games" style={styles.seriesLink}>Watch Now</a>
-            </div>
-
-            <div style={styles.seriesCard}>
-              <img
-                src="https://images.unsplash.com/photo-1505478365455-df19b9c58c5f"
-                alt="Chess Tactics Series"
-                style={styles.seriesImage}
-              />
-              <h3 style={styles.seriesTitle}>Chess Tactics & Strategies</h3>
-              <p style={styles.seriesDescription}>Hone your tactical skills with in-depth lessons on forks, pins, skewers, and more.</p>
-              <a href="/series/tactics" style={styles.seriesLink}>Learn Tactics</a>
-            </div>
+          <p style={styles.sectionText}>
+            Dive into our carefully crafted chess series to understand the game from beginner to advanced levels. Each series will take you through various chess tactics, strategies, and famous historical games.
+          </p>
+          <ul style={styles.list}>
+  <li style={styles.listItem}>
+    🌟 <strong>Beginner's Guide:</strong> Learn the basic rules, movements, and setups for chess.
+    <a href="" style={styles.link}>tutorial chess</a>
+  </li>
+  <li style={styles.listItem}>
+    🔍 <strong>Intermediate Tactics:</strong> Master intermediate strategies like pins, forks, and skewers.
+    <a href="https://www.youtube.com/watch?v=goW1cFHaxtU" style={styles.link}>intermediate tactics</a>
+  </li>
+  <li style={styles.listItem}>
+    🏆 <strong>Advanced Techniques:</strong> Explore high-level strategies used by grandmasters.
+    <a href="https://www.youtube.com/watch?v=fGFl4GjVvrA" style={styles.link}>advanced techniques</a>
+  </li>
+  <li style={styles.listItem}>
+    🎓 <strong>Famous Chess Games:</strong> Analyze some of the most famous games in chess history.
+    <a href="https://www.youtube.com/watch?v=LzmSy2N5GaQ" style={styles.link}>Famous chess Games</a>
+  </li>
+</ul>
+</div>
+<div style={styles.section}>
+  <h2 style={styles.sectionTitle}>The Relationship Between Chess and Philosophy</h2>
+  <p style={styles.sectionText}>
+    Chess and philosophy, at first glance, might seem like entirely different pursuits—one is a game, the other a discipline of thought. However, these two worlds are deeply connected in many ways. Both demand clarity of thought, an understanding of logic, and a strategy that can transcend the immediate to look at the bigger picture.
+  </p>
+  <p style={styles.sectionText}>
+    In philosophy, the study of logic involves understanding patterns, relationships, and consequences—ideas that are at the core of chess. Philosophers like René Descartes, Immanuel Kant, and even the ancient Greek philosophers emphasized the importance of clear thinking, something that is mirrored in every move a chess player makes. Chess is often considered a metaphor for life: a battle of wits where strategy, decision-making, and foresight are essential.
+  </p>
+  <p style={styles.sectionText}>
+    Chess requires the player to constantly question, analyze, and reconsider each move, not unlike how philosophical thinking challenges assumptions, pushes boundaries, and seeks the most rational outcomes. Just as a philosopher formulates arguments based on premises and conclusions, a chess player analyzes each position based on the current state of the game, eventually building to a solution. The game’s endless variations echo the infinite complexity of philosophical reasoning.
+  </p>
+  <p style={styles.sectionText}>
+    Chess also teaches the value of patience and discipline—qualities that are emphasized in philosophy. The philosopher spends years contemplating ideas, carefully structuring arguments and considering every counterargument. Similarly, a skilled chess player practices, studies, and meticulously prepares for each game, anticipating every possible outcome. Whether in a game of chess or a philosophical debate, the journey is as important as the destination.
+  </p>
+  <div style={styles.imageContainer}>
+    <img
+      src="https://png.pngtree.com/thumb_back/fh260/background/20230414/pngtree-chess-player-achieving-success-surreal-and-conceptual-scene-of-a-tiny-photo-image_2423278.jpg"
+      alt="Chess and Philosophy"
+      style={styles.image}
+    />
+  </div>
+  <p style={styles.sectionText}>
+    For philosophers like Plato, chess can even be seen as a metaphor for the mind’s relationship with the world. Plato's "Allegory of the Cave" speaks to the notion of understanding reality through intellectual progress, and similarly, in chess, a player gradually increases their understanding of the game as they move from basic concepts to advanced strategies.
+  </p>
+  <p style={styles.sectionText}>
+    In conclusion, chess and philosophy share a profound connection that extends beyond mere logic. Both are intellectual pursuits that foster deep thinking, strategic planning, and self-discipline. The next time you sit down at the chessboard, remember: each move is more than just a step toward checkmate—it's an exercise in the very philosophy of thought itself.
+  </p>
+</div>
+     
+        {/* Chess in Real Life Section */}
+        <div style={styles.section}>
+          <h2 style={styles.sectionTitle}>Chess in Real Life</h2>
+          <p style={styles.sectionText}>
+            Chess is not just a game confined to the chessboard. It has significant real-life applications and has influenced various aspects of society. From improving cognitive skills to fostering strategic thinking in business and education, chess has far-reaching implications.
+          </p>
+          <p style={styles.sectionText}>
+            Many renowned leaders and thinkers have used chess as a metaphor for strategy and decision-making. It is said that playing chess regularly can help improve memory, problem-solving skills, and concentration. Additionally, its ability to teach patience, perseverance, and the importance of planning makes it an excellent tool for personal growth.
+          </p>
+          <div style={styles.imageContainer}>
+            {/* Replace this with your own image */}
+            <img
+              src="https://cartoonmovement.typepad.com/.a/6a014e5f5d3c7c970c02788021f334200d-pi"
+              alt="Chess in Real Life"
+              style={styles.image}
+            />
           </div>
         </div>
 
@@ -122,6 +154,9 @@ const Home = () => {
             </ol>
           </p>
         </div>
+        
+
+
 
         <div style={styles.article}>
           <h3 style={styles.articleTitle}>Famous Chess Players Throughout History</h3>
@@ -131,6 +166,32 @@ const Home = () => {
               <li>Bobby Fischer</li>
               <li>Garry Kasparov</li>
               <li>Magnus Carlsen</li>
+            </ul>
+          </p>
+        </div>
+
+        {/* New Sidebar Elements */}
+        <div style={styles.article}>
+          <h3 style={styles.articleTitle}>Chess Strategy Tips</h3>
+          <p style={styles.articleText}>
+            Mastering chess requires understanding key strategies. Here are a few tips to improve your game:
+            <ul>
+              <li>Control the center of the board early.</li>
+              <li>Develop your pieces quickly.</li>
+              <li>Don’t move the same piece multiple times in the opening.</li>
+              <li>Look for tactical opportunities like pins and forks.</li>
+            </ul>
+          </p>
+        </div>
+
+        <div style={styles.article}>
+          <h3 style={styles.articleTitle}>Chess Online Resources</h3>
+          <p style={styles.articleText}>
+            There are several online resources to help you practice and improve your chess skills:
+            <ul>
+              <li><a href="https://www.chess.com" target="_blank" style={styles.link}>Chess.com</a> - Play games and solve puzzles.</li>
+              <li><a href="https://lichess.org" target="_blank" style={styles.link}>Lichess.org</a> - Free chess platform with tutorials and games.</li>
+              <li><a href="https://www.chessbase.com" target="_blank" style={styles.link}>ChessBase</a> - Database of famous chess games and analysis tools.</li>
             </ul>
           </p>
         </div>
@@ -185,42 +246,15 @@ const styles = {
     margin: "0 auto 40px",
     transition: "transform 0.3s ease",
   },
-  seriesContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "20px",
+  imageContainer: {
+    margin: "40px 0",
   },
-  seriesCard: {
-    width: "30%",
-    backgroundColor: "#f1f1f1",
-    borderRadius: "10px",
-    overflow: "hidden",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    padding: "10px",
-    textAlign: "center",
-  },
-  seriesImage: {
+  image: {
     width: "100%",
-    height: "200px",
-    objectFit: "cover",
+    maxWidth: "800px",
     borderRadius: "10px",
-  },
-  seriesTitle: {
-    fontSize: "20px",
-    color: "#333",
-    marginTop: "10px",
-  },
-  seriesDescription: {
-    fontSize: "16px",
-    color: "#555",
-    marginBottom: "20px",
-  },
-  seriesLink: {
-    textDecoration: "none",
-    padding: "10px 20px",
-    backgroundColor: "#333",
-    color: "#fff",
-    borderRadius: "5px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    transition: "transform 0.3s ease",
   },
   sectionTitle: {
     fontSize: "32px",
@@ -247,6 +281,16 @@ const styles = {
     marginBottom: "10px",
     fontFamily: "'Arial', sans-serif",
   },
+  link: {
+    color: "#1a73e8", // Blue color for the link
+    textDecoration: "none", // Remove underline
+    fontWeight: "bold", // Make the text bold
+    transition: "color 0.3s ease", // Smooth transition for hover effect
+  },
+  linkHover: {
+    color: "#ff5733", // Change color on hover
+    textDecoration: "underline", // Underline on hover
+  },
   buttonContainer: {
     display: "flex",
     justifyContent: "center",
@@ -267,16 +311,6 @@ const styles = {
     backgroundColor: "#555",
     transform: "scale(1.05)",
   },
-  imageContainer: {
-    margin: "40px 0",
-  },
-  image: {
-    width: "100%",
-    maxWidth: "800px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    transition: "transform 0.3s ease",
-  },
   article: {
     marginBottom: "20px",
   },
@@ -291,6 +325,10 @@ const styles = {
     color: "#555",
     lineHeight: "1.5",
     fontFamily: "'Arial', sans-serif",
+  },
+  link: {
+    color: "#1a73e8",
+    textDecoration: "none",
   },
 };
 
