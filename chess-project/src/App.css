@@ -1,0 +1,17 @@
+/* src/App.css */
+/* Add smooth transitions for the navbar and content */
+.navbar {
+  left: -250px; /* Hide navbar by default */
+}
+
+.navbar.open {
+  left: 0; /* Show navbar when open */
+}
+
+.content {
+  margin-left: 0; /* No margin by default */
+}
+
+.content.shifted {
+  margin-left: 250px; /* Shift content when navbar is open */
+}
