@@ -12,6 +12,7 @@ const Navbar = ({ onClose }) => {
       <Link to="/lessons" style={styles.link}>Lessons</Link>
       <Link to="/practice" style={styles.link}>Practice</Link>
       <Link to="/quiz" style={styles.link}>Quiz</Link>
+      <Link to="/memes" style={styles.link}>Memes</Link>
       <Link to="/login" style={styles.link}>Login</Link>
     </nav>
   );

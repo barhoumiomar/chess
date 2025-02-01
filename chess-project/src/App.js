@@ -7,6 +7,7 @@ import Practice from "./pages/Practice";
 import Quiz from "./pages/Quiz";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Memes from "./pages/Memes";
 import "./App.css"; // Add custom CSS for the layout
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/lessons" element={<Lessons />} />
             <Route path="/practice" element={<Practice />} />
             <Route path="/quiz" element={<Quiz />} />
+            <Route path="/memes" element={<Memes />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>
