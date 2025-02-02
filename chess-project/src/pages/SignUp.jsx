@@ -1,35 +1,50 @@
-// src/SignIn.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // For navigation after login
+import { useNavigate } from "react-router-dom"; // For navigation after signup
 
-const SignIn = () => {
+const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+  
     try {
-      // Send login request to the backend
-      const res = await axios.post("/api/auth/login", { username, password });
-
+      // Send signup request to the backend
+      const res = await axios.post("http://localhost:5000/api/auth/signup", { username, password });
+  
       // Save the JWT token to localStorage
-      localStorage.setItem("token", res.data.token);
-
-      // Redirect to the quiz page after successful login
-      navigate("/quiz");
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+      }
+  
+      // Redirect to the profile creation page
+      navigate("/profile"); // Redirect to the profile creation page
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong");
+      setError(err.response?.data?.message || err.message || "Something went wrong");
     }
   };
+  
 
   return (
     <div style={styles.container}>
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
+
+      {/* Display success message if present */}
+      {successMessage && <p style={styles.success}>{successMessage}</p>}
+
+      {/* Display error message if present */}
       {error && <p style={styles.error}>{error}</p>}
+
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="text"
@@ -47,12 +62,20 @@ const SignIn = () => {
           style={styles.input}
           required
         />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          style={styles.input}
+          required
+        />
         <button type="submit" style={styles.button}>
-          Sign In
+          Sign Up
         </button>
       </form>
       <p>
-        Don't have an account? <a href="/signup">Sign up here</a>.
+        Already have an account? <a href="/signin">Sign in here</a>.
       </p>
     </div>
   );
@@ -92,6 +115,11 @@ const styles = {
     color: "red",
     fontSize: "14px",
   },
+  success: {
+    color: "green",
+    fontSize: "16px",
+    marginBottom: "10px",
+  },
 };
 
-export default SignIn;
+export default SignUp;

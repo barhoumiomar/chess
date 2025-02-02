@@ -6,12 +6,15 @@ import Lessons from "./pages/Lessons";
 import Practice from "./pages/Practice";
 import Quiz from "./pages/Quiz";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp.jsx"; // ✅ Uncommented the import
 import Navbar from "./components/Navbar";
 import Memes from "./pages/Memes";
+import Profile from "./pages/Profile";
+
 import "./App.css"; // Add custom CSS for the layout
 
 function App() {
-  const [showNavbar, setShowNavbar] = useState(false); // State to manage navbar visibility
+  const [showNavbar, setShowNavbar] = useState(false);
 
   return (
     <Router>
@@ -40,6 +43,8 @@ function App() {
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/memes" element={<Memes />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} /> {/* ✅ Added SignUp Route */}
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </div>
@@ -65,7 +70,7 @@ const styles = {
     borderRadius: "5px",
     fontSize: "24px",
     cursor: "pointer",
-    zIndex: 1000, // Ensure the button is above other elements
+    zIndex: 1000, 
   },
   navbar: {
     width: "170px",
@@ -76,8 +81,8 @@ const styles = {
     position: "fixed",
     height: "100vh",
     overflowY: "auto",
-    transition: "left 0.3s ease", // Smooth transition for navbar
-    zIndex: 1001, // Ensure the navbar is above the overlay
+    transition: "left 0.3s ease",
+    zIndex: 1001,
   },
   overlay: {
     position: "fixed",
@@ -85,13 +90,13 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
-    zIndex: 999, // Ensure the overlay is below the navbar but above the content
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    zIndex: 999, 
   },
   content: {
     flex: 1,
     padding: "20px",
-    transition: "margin-left 0.3s ease", // Smooth transition for content
+    transition: "margin-left 0.3s ease",
   },
 };
 

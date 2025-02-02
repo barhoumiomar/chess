@@ -1,26 +1,36 @@
 // src/pages/Login.jsx
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Simple validation
-    if (username === "user" && password === "password") {
-      alert("Login successful!");
-      navigate("/"); // Redirect to homepage after login
-    } else {
-      alert("Invalid username or password");
+    setError(""); // Reset error before new request
+
+    try {
+      // Send login request to the backend
+      const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
+
+      // Store JWT token in localStorage
+      localStorage.setItem("token", res.data.token);
+
+      // Redirect to homepage after login
+      navigate("/");
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid username or password");
     }
   };
 
   return (
     <div style={styles.container}>
       <h1>Login</h1>
+      {error && <p style={styles.error}>{error}</p>}
       <form onSubmit={handleLogin} style={styles.form}>
         <div style={styles.formGroup}>
           <label htmlFor="username">Username:</label>
@@ -80,6 +90,11 @@ const styles = {
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
+  },
+  error: {
+    color: "red",
+    fontSize: "14px",
+    marginTop: "10px",
   },
 };
 

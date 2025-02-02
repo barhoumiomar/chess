@@ -14,6 +14,8 @@ const Navbar = ({ onClose }) => {
       <Link to="/quiz" style={styles.link}>Quiz</Link>
       <Link to="/memes" style={styles.link}>Memes</Link>
       <Link to="/login" style={styles.link}>Login</Link>
+      <Link to="/signup" style={styles.link}>Sign Up</Link> {/* ✅ Uncommented Signup */}
+      <Link to="/Profile" style={styles.link}>Profile</Link>
     </nav>
   );
 };
