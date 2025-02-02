@@ -3,47 +3,81 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ onClose }) => {
+  const isAuthenticated = localStorage.getItem("token"); // Check if the user is authenticated
+
   return (
-    <nav style={styles.nav}>
-      <button style={styles.closeButton} onClick={onClose}>
-        ×
-      </button>
-      <Link to="/" style={styles.link}>Home</Link>
-      <Link to="/lessons" style={styles.link}>Lessons</Link>
-      <Link to="/practice" style={styles.link}>Practice</Link>
-      <Link to="/quiz" style={styles.link}>Quiz</Link>
-      <Link to="/memes" style={styles.link}>Memes</Link>
-      <Link to="/login" style={styles.link}>Login</Link>
-      <Link to="/signup" style={styles.link}>Sign Up</Link> {/* ✅ Uncommented Signup */}
-      <Link to="/Profile" style={styles.link}>Profile</Link>
-    </nav>
+    <div style={styles.navbar}>
+      <button style={styles.closeButton} onClick={onClose}>X</button>
+      <ul style={styles.navList}>
+        <li>
+          <Link to="/" style={styles.link}>Home</Link>
+        </li>
+        <li>
+          <Link to="/lessons" style={styles.link}>Lessons</Link>
+        </li>
+        <li>
+          <Link to="/practice" style={styles.link}>Practice</Link>
+        </li>
+        <li>
+          <Link to="/quiz" style={styles.link}>Quiz</Link>
+        </li>
+        <li>
+          <Link to="/memes" style={styles.link}>Memes</Link>
+        </li>
+        {isAuthenticated ? (
+          <>
+            <li>
+              <Link to="/profile" style={styles.link}>Profile</Link>
+            </li>
+            <li>
+              <Link to="/logout" style={styles.link}>Logout</Link> {/* Logout link */}
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/login" style={styles.link}>Login</Link>
+            </li>
+            <li>
+              <Link to="/signup" style={styles.link}>Sign Up</Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </div>
   );
 };
 
 const styles = {
-  nav: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
+  navbar: {
+    width: "150px",
+    backgroundColor: "#333",
+    color: "#fff",
+    padding: "20px",
+    position: "fixed",
+    height: "100vh",
+    boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)",
+    overflowY: "auto",
+    transition: "left 0.3s ease",
   },
   closeButton: {
-    alignSelf: "flex-end",
-    backgroundColor: "transparent",
+    background: "transparent",
     border: "none",
     color: "#fff",
-    fontSize: "24px",
+    fontSize: "20px",
     cursor: "pointer",
+    marginBottom: "20px",
+  },
+  navList: {
+    listStyle: "none",
+    padding: "0",
   },
   link: {
     color: "#fff",
     textDecoration: "none",
+    display: "block",
+    padding: "10px 0",
     fontSize: "18px",
-    padding: "10px",
-    borderRadius: "5px",
-    transition: "background-color 0.3s ease",
-  },
-  linkHover: {
-    backgroundColor: "#555",
   },
 };
 

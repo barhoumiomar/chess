@@ -1,11 +1,25 @@
 import React from "react";
+import { useEffect,useState } from "react";
+const Home = ({ user }) => {
+  const [greetingMessage, setGreetingMessage] = useState("");
 
-const Home = () => {
+  useEffect(() => {
+    if (user && user.username) {
+      setGreetingMessage(`Hello ${user.username}, how are you today?`);
+    } else {
+      setGreetingMessage("Hello, Guest!");
+    }
+  }, [user]);
+
   return (
     <div style={styles.container}>
       <div style={styles.mainContent}>
-        <h1 style={styles.title}>Welcome to Chess Learning!</h1>
-        <p style={styles.subtitle}>Learn chess from zero to hero, practice your skills, and test your knowledge with quizzes.</p>
+      <h1>Welcome to chessClub</h1>
+      {user ? (
+        <h2 style={styles.greeting}>Hello <span style={styles.username}>{user.username}</span>!</h2>
+      ) : (
+        <h2>Please log in to see personalized content.</h2>
+      )}
         
         {/* Chessboard Image */}
         <div style={styles.imageContainer}>
@@ -223,6 +237,7 @@ const styles = {
     top: "12",
     height: "fit-content",
   },
+  
   title: {
     fontSize: "48px",
     color: "#333",
@@ -296,6 +311,17 @@ const styles = {
     justifyContent: "center",
     gap: "20px",
     marginTop: "20px",
+  },
+  greeting: {
+    fontSize: "2.5em",
+    color: "#333",
+    marginTop: "20px",
+    fontWeight: "bold",
+    animation: "fadeIn 1s ease-in-out",
+  },
+  username: {
+    color: "#ff6f61", // This adds a pop of color to the username
+    fontStyle: "italic",
   },
   button: {
     padding: "15px 30px",

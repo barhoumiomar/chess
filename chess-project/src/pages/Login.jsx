@@ -1,29 +1,48 @@
-// src/pages/Login.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Loading state to track login process
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(""); // Reset error before new request
+    setLoading(true); // Set loading state to true while waiting for login
+
+    console.log({ username, password }); // Check the data being sent
 
     try {
-      // Send login request to the backend
-      const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
+      // Simulate a delay of 3 seconds before sending the login request
+      setTimeout(async () => {
+        try {
+          // Send login request to the backend
+          const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
 
-      // Store JWT token in localStorage
-      localStorage.setItem("token", res.data.token);
+          console.log(res.data); // Log the response to ensure token is returned
 
-      // Redirect to homepage after login
-      navigate("/");
+          // Store JWT token in localStorage
+          localStorage.setItem("token", res.data.token);
+
+          // Call the onLogin function passed as a prop
+          onLogin({ username });
+
+          // Redirect to homepage after login
+          navigate("/");
+        } catch (err) {
+          console.error(err.response); // Log the error to see the response structure
+          setError(err.response?.data?.message || "Invalid username or password");
+        } finally {
+          setLoading(false); // Reset loading state once the request is complete
+        }
+      }, 3000); // 3-second delay
     } catch (err) {
-      setError(err.response?.data?.message || "Invalid username or password");
+      console.error(err);
+      setLoading(false); // Reset loading if an error occurs immediately
     }
   };
 
@@ -31,6 +50,7 @@ const Login = () => {
     <div style={styles.container}>
       <h1>Login</h1>
       {error && <p style={styles.error}>{error}</p>}
+      {loading && <p style={styles.loading}>Logging in...</p>} {/* Show loading message */}
       <form onSubmit={handleLogin} style={styles.form}>
         <div style={styles.formGroup}>
           <label htmlFor="username">Username:</label>
@@ -54,7 +74,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" style={styles.button}>
+        <button type="submit" style={styles.button} disabled={loading}>
           Login
         </button>
       </form>
@@ -94,6 +114,11 @@ const styles = {
   error: {
     color: "red",
     fontSize: "14px",
+    marginTop: "10px",
+  },
+  loading: {
+    color: "#007BFF",
+    fontSize: "16px",
     marginTop: "10px",
   },
 };

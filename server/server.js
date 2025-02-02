@@ -25,7 +25,7 @@ const upload = multer({ storage });
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI, {  })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
@@ -33,7 +33,9 @@ mongoose
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  profilePicture: { type: String }, // Add this field to store profile picture URL
 });
+
 
 const User = mongoose.model("User", UserSchema);
 
@@ -81,18 +83,22 @@ app.post("/api/auth/login", async (req, res) => {
 // Middleware to authenticate JWT and fetch user data
 const authenticateJWT = (req, res, next) => {
   const token = req.headers["authorization"]?.split(" ")[1];
+  
   if (!token) {
-    return res.status(403).json({ message: "Access denied" });
+    return res.status(403).json({ message: "Access denied, no token provided" });
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
-      return res.status(403).json({ message: "Invalid token" });
+      console.error("JWT Verification Error:", err.message); // Log error details
+      return res.status(403).json({ message: "Invalid token", error: err.message });
     }
     req.user = user;
     next();
   });
 };
+
+
 
 // Profile Creation Route with file upload
 app.post("/api/profile", authenticateJWT, upload.single("profilePicture"), async (req, res) => {
@@ -122,5 +128,7 @@ app.post("/api/profile", authenticateJWT, upload.single("profilePicture"), async
 });
 
 // Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 5000;  // Use a different port
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});

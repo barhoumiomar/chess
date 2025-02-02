@@ -1,50 +1,59 @@
-// src/App.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Lessons from "./pages/Lessons";
 import Practice from "./pages/Practice";
 import Quiz from "./pages/Quiz";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp.jsx"; // ✅ Uncommented the import
+import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Memes from "./pages/Memes";
 import Profile from "./pages/Profile";
+import Logout from "./pages/LogOut";
 
-import "./App.css"; // Add custom CSS for the layout
 
 function App() {
   const [showNavbar, setShowNavbar] = useState(false);
+  const [user, setUser] = useState(null);
+
+ 
+    
+
+  const handleLogin = (userData) => {
+    setUser(userData); // Set the user data on successful login
+  };
+
+  const handleLogout = () => {
+    // Clear the user data and token on logout
+    localStorage.removeItem("token");
+    setUser(null);
+  };
 
   return (
     <Router>
       <div style={styles.container}>
-        {/* Hamburger Menu Toggle Button */}
         <button style={styles.toggleButton} onClick={() => setShowNavbar(!showNavbar)}>
           ☰
         </button>
 
-        {/* Navbar */}
         <div style={{ ...styles.navbar, left: showNavbar ? "0" : "-250px" }}>
           <Navbar onClose={() => setShowNavbar(false)} />
         </div>
 
-        {/* Overlay */}
         {showNavbar && (
           <div style={styles.overlay} onClick={() => setShowNavbar(false)} />
         )}
-
-        {/* Main Content */}
-        <div style={styles.content}>
+        <div style={styles.container}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home user={user} />} />
             <Route path="/lessons" element={<Lessons />} />
             <Route path="/practice" element={<Practice />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/memes" element={<Memes />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} /> {/* ✅ Added SignUp Route */}
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/profile" element={user ? <Profile user={user} /> : <Login />} />
+            <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
           </Routes>
         </div>
       </div>
@@ -55,6 +64,14 @@ function App() {
 const styles = {
   container: {
     display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    backgroundColor: "#f9f9f9",
+    position: "relative",
+  },
+container: {
+    display: "flex",
+    flexDirection: "column",
     minHeight: "100vh",
     backgroundColor: "#f9f9f9",
     position: "relative",
@@ -70,7 +87,7 @@ const styles = {
     borderRadius: "5px",
     fontSize: "24px",
     cursor: "pointer",
-    zIndex: 1000, 
+    zIndex: 1000,
   },
   navbar: {
     width: "170px",
@@ -91,13 +108,10 @@ const styles = {
     width: "100%",
     height: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    zIndex: 999, 
-  },
-  content: {
-    flex: 1,
-    padding: "20px",
-    transition: "margin-left 0.3s ease",
+    zIndex: 999,
   },
 };
+
+
 
 export default App;

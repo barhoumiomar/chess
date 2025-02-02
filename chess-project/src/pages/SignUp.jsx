@@ -1,8 +1,9 @@
+// src/pages/SignUp.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // For navigation after signup
 
-const SignUp = () => {
+const SignUp = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -26,6 +27,9 @@ const SignUp = () => {
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
       }
+  
+      // Notify parent component about successful login
+       // Pass the logged-in user to parent
   
       // Redirect to the profile creation page
       navigate("/profile"); // Redirect to the profile creation page
@@ -75,7 +79,7 @@ const SignUp = () => {
         </button>
       </form>
       <p>
-        Already have an account? <a href="/signin">Sign in here</a>.
+        Already have an account? <a href="/signin">Sign in here</a>.<br />
       </p>
     </div>
   );

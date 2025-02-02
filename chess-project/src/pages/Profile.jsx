@@ -1,132 +1,261 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-const Profile = () => {
-  const [fullName, setFullName] = useState("");
-  const [bio, setBio] = useState("");
-  const [profilePicture, setProfilePicture] = useState(null);
+const Profile = ({ user }) => {
+  const [profilePicture, setProfilePicture] = useState(user?.profilePicture || null);
+  const [wallpaper, setWallpaper] = useState(user?.wallpaper || null);
+  const [newUsername, setNewUsername] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const navigate = useNavigate();
+  const [success, setSuccess] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Upload Profile Picture
+  const handleProfilePictureUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
     const formData = new FormData();
-    formData.append("fullName", fullName);
-    formData.append("bio", bio);
-    if (profilePicture) {
-      formData.append("profilePicture", profilePicture);
+    formData.append("profilePicture", file);
+
+    try {
+      const response = await axios.put(
+        "http://localhost:5000/api/user/update-profile-picture",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      setProfilePicture(`http://localhost:5000/uploads/${response.data.profilePicture}`);
+      setSuccess("Profile picture updated successfully!");
+      setError("");
+    } catch (err) {
+      console.error(err);
+      setError("Failed to update profile picture.");
+    }
+  };
+
+  // Upload Wallpaper
+  const handleWallpaperChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("wallpaper", file);
+
+    try {
+      const response = await axios.put(
+        "http://localhost:5000/api/user/update-wallpaper",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      setWallpaper(`http://localhost:5000/uploads/${response.data.wallpaper}`);
+      setSuccess("Wallpaper updated successfully!");
+      setError("");
+    } catch (err) {
+      console.error(err);
+      setError("Failed to update wallpaper.");
+    }
+  };
+
+  // Update Username
+  const handleUsernameChange = async () => {
+    try {
+      await axios.put(
+        "http://localhost:5000/api/user/update-username",
+        { newUsername },
+        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+      );
+
+      setSuccess("Username updated successfully!");
+      setError("");
+    } catch (err) {
+      console.error(err);
+      setError("Failed to update username.");
+    }
+  };
+
+  // Update Password
+  const handlePasswordChange = async (e) => {
+    e.preventDefault();
+
+    if (newPassword !== confirmPassword) {
+      setError("Passwords do not match!");
+      return;
     }
 
     try {
-      const token = localStorage.getItem("token");
-      
-      // If there's no token, show an error
-      if (!token) {
-        setError("No token found, please log in again.");
-        return;
-      }
+      await axios.put(
+        "http://localhost:5000/api/user/update-password",
+        { oldPassword, newPassword },
+        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+      );
 
-      const res = await axios.post("http://localhost:5000/api/profile", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      setSuccessMessage("Profile created successfully! Redirecting...");
-      setTimeout(() => {
-        navigate("/home"); // Redirect to home page after profile creation
-      }, 3000);
+      setSuccess("Password updated successfully!");
+      setError("");
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
     } catch (err) {
-      setError(err.response?.data?.message || err.message || "Something went wrong");
+      console.error(err);
+      setError("Failed to update password.");
     }
   };
 
   return (
     <div style={styles.container}>
-      <h1>Create Your Profile</h1>
-
-      {/* Display success message if present */}
-      {successMessage && <p style={styles.success}>{successMessage}</p>}
-
-      {/* Display error message if present */}
+      <h2>Profile Settings</h2>
       {error && <p style={styles.error}>{error}</p>}
+      {success && <p style={styles.success}>{success}</p>}
 
-      <form onSubmit={handleSubmit} style={styles.form}>
+      {/* Profile Picture */}
+      <div>
+        <h4>Change Profile Picture</h4>
+        <input type="file" onChange={handleProfilePictureUpload} />
+        {profilePicture && (
+          <img src={profilePicture} alt="Profile" style={styles.image} />
+        )}
+      </div>
+
+      {/* Wallpaper */}
+      <div>
+        <h4>Change Wallpaper</h4>
+        <input type="file" onChange={handleWallpaperChange} />
+        {wallpaper && (
+          <img src={wallpaper} alt="Wallpaper" style={styles.wallpaper} />
+        )}
+      </div>
+
+      {/* Username */}
+      <div>
+        <h4>Change Username</h4>
         <input
           type="text"
-          placeholder="Full Name"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-          style={styles.input}
-          required
+          placeholder="New Username"
+          value={newUsername}
+          onChange={(e) => setNewUsername(e.target.value)}
         />
-        <textarea
-          placeholder="Bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-          style={styles.textarea}
+        <button onClick={handleUsernameChange}>Update Username</button>
+      </div>
+
+      {/* Password */}
+      <div>
+        <h4>Change Password</h4>
+        <input
+          type="password"
+          placeholder="Old Password"
+          value={oldPassword}
+          onChange={(e) => setOldPassword(e.target.value)}
         />
         <input
-          type="file"
-          onChange={(e) => setProfilePicture(e.target.files[0])}
-          style={styles.input}
+          type="password"
+          placeholder="New Password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
         />
-        <button type="submit" style={styles.button}>
-          Save Profile
-        </button>
-      </form>
+        <input
+          type="password"
+          placeholder="Confirm New Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button onClick={handlePasswordChange}>Update Password</button>
+      </div>
     </div>
   );
 };
-
+//Styles
 const styles = {
   container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
-    backgroundColor: "#f9f9f9",
+    padding: "40px",
+    maxWidth: "800px",
+    margin: "auto",
+    backgroundColor: "#ffffff",
+    borderRadius: "16px",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+    fontFamily: "'Inter', sans-serif",
+    textAlign: "center",
   },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    width: "300px",
+  header: {
+    color: "#333",
+    fontSize: "28px",
+    fontWeight: "700",
+    marginBottom: "30px",
+    letterSpacing: "-0.5px",
+  },
+  section: {
+    marginBottom: "30px",
+  },
+  sectionTitle: {
+    color: "#555",
+    fontSize: "18px",
+    marginBottom: "15px",
+    fontWeight: "500",
   },
   input: {
-    padding: "10px",
+    width: "100%",
+    padding: "12px",
+    marginBottom: "15px",
+    borderRadius: "8px",
+    border: "1px solid #ddd",
     fontSize: "16px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
+    outline: "none",
+    boxSizing: "border-box",
+    transition: "all 0.3s ease",
   },
-  textarea: {
-    padding: "10px",
-    fontSize: "16px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    height: "100px",
+  fileInput: {
+    marginBottom: "15px",
   },
   button: {
-    padding: "10px",
-    fontSize: "16px",
-    backgroundColor: "#333",
-    color: "#fff",
+    padding: "12px 30px",
+    borderRadius: "8px",
     border: "none",
-    borderRadius: "5px",
+    backgroundColor: "#4CAF50",
+    color: "white",
+    fontSize: "16px",
+    fontWeight: "500",
     cursor: "pointer",
+    transition: "all 0.3s ease",
+  },
+  buttonHover: {
+    backgroundColor: "#45a049",
   },
   error: {
-    color: "red",
+    color: "#ff4d4d",
     fontSize: "14px",
+    marginTop: "10px",
   },
   success: {
-    color: "green",
-    fontSize: "16px",
-    marginBottom: "10px",
+    color: "#4CAF50",
+    fontSize: "14px",
+    marginTop: "10px",
+  },
+  profileImage: {
+    width: "120px",
+    height: "120px",
+    borderRadius: "50%",
+    marginTop: "15px",
+    objectFit: "cover",
+    border: "4px solid #4CAF50",
+  },
+  wallpaperImage: {
+    width: "100%",
+    height: "200px",
+    borderRadius: "12px",
+    objectFit: "cover",
+    marginTop: "15px",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
   },
 };
 
