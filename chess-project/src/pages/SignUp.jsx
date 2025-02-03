@@ -1,7 +1,6 @@
-// src/pages/SignUp.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // For navigation after signup
+import { useNavigate } from "react-router-dom"; 
 
 const SignUp = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -20,19 +19,18 @@ const SignUp = ({ onLogin }) => {
     }
   
     try {
-      // Send signup request to the backend
+      
       const res = await axios.post("http://localhost:5000/api/auth/signup", { username, password });
   
-      // Save the JWT token to localStorage
+      
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
       }
   
-      // Notify parent component about successful login
-       // Pass the logged-in user to parent
+      
   
-      // Redirect to the profile creation page
-      navigate("/profile"); // Redirect to the profile creation page
+      
+      navigate("/login"); 
     } catch (err) {
       setError(err.response?.data?.message || err.message || "Something went wrong");
     }
@@ -43,10 +41,10 @@ const SignUp = ({ onLogin }) => {
     <div style={styles.container}>
       <h1>Sign Up</h1>
 
-      {/* Display success message if present */}
+     
       {successMessage && <p style={styles.success}>{successMessage}</p>}
 
-      {/* Display error message if present */}
+      
       {error && <p style={styles.error}>{error}</p>}
 
       <form onSubmit={handleSubmit} style={styles.form}>

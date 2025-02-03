@@ -25,8 +25,9 @@ const Login = ({ onLogin }) => {
 
           console.log(res.data); // Log the response to ensure token is returned
 
-          // Store JWT token in localStorage
+          // Store JWT token and user info in localStorage
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify({ username })); // Store the user in localStorage
 
           // Call the onLogin function passed as a prop
           onLogin({ username });
@@ -82,44 +83,48 @@ const Login = ({ onLogin }) => {
   );
 };
 
+
 const styles = {
   container: {
-    padding: "20px",
-    textAlign: "center",
-  },
-  form: {
-    maxWidth: "300px",
+    maxWidth: "400px",
     margin: "0 auto",
-  },
-  formGroup: {
-    marginBottom: "15px",
-    textAlign: "left",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    marginTop: "5px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-  },
-  button: {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#333",
-    color: "#fff",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
+    padding: "40px",
+    backgroundColor: "#fff",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
   },
   error: {
     color: "red",
-    fontSize: "14px",
-    marginTop: "10px",
+    marginBottom: "10px",
   },
   loading: {
-    color: "#007BFF",
+    color: "#0968AF",
+    marginBottom: "10px",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  formGroup: {
+    marginBottom: "20px",
+  },
+  input: {
+    padding: "10px",
     fontSize: "16px",
-    marginTop: "10px",
+    marginTop: "5px",
+    width: "100%",
+    borderRadius: "4px",
+    border: "1px solid #ddd",
+  },
+  button: {
+    backgroundColor: "#0968AF",
+    color: "#fff",
+    padding: "10px 0",
+    fontSize: "18px",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    transition: "background-color 0.3s",
   },
 };
 

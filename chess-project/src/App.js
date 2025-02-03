@@ -8,7 +8,6 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Memes from "./pages/Memes";
-import Profile from "./pages/Profile";
 import Logout from "./pages/LogOut";
 
 function App() {
@@ -51,7 +50,6 @@ function App() {
             <Route path="/memes" element={<Memes />} />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/profile" element={user ? <Profile user={user} /> : <Login />} />
             <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
           </Routes>
         </div>

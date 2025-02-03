@@ -2,12 +2,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ onClose }) => {
+const Navbar = ({ onLogout }) => {
   const isAuthenticated = localStorage.getItem("token"); // Check if the user is authenticated
 
   return (
     <div style={styles.navbar}>
-      <button style={styles.closeButton} onClick={onClose}>X</button>
+      <button style={styles.closeButton} onClick={onLogout}>X</button>
       <ul style={styles.navList}>
         <li>
           <Link to="/" style={styles.link}>Home</Link>
@@ -30,9 +30,6 @@ const Navbar = ({ onClose }) => {
         )}
         {isAuthenticated ? (
           <>
-            <li>
-              <Link to="/profile" style={styles.link}>Profile</Link>
-            </li>
             <li>
               <Link to="/logout" style={styles.link}>Logout</Link>
             </li>

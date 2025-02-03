@@ -4,23 +4,22 @@ import { useNavigate } from "react-router-dom";
 
 const Logout = ({ onLogout }) => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false); // State for loading
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Set loading to true before starting the logout process
-    setLoading(true);
+    setLoading(true); // Set loading before logout process
 
-    // Simulate a 2-second delay for the logout process
     setTimeout(() => {
-      // Clear token from localStorage
+      // Remove user token from localStorage to log them out
       localStorage.removeItem("token");
+      localStorage.removeItem("user"); // Make sure to clear user data too
       console.log("User logged out successfully.");
 
       // Call the onLogout prop to update the app state
       onLogout();
 
-      // Redirect to the home page after logout
-      navigate("/");
+      // Redirect to the HomeGuest page after logout
+      navigate("/"); // Redirect to HomeGuest page
     }, 2000); // 2-second delay before logout
   }, [navigate, onLogout]);
 
@@ -29,7 +28,7 @@ const Logout = ({ onLogout }) => {
       {loading ? (
         <div style={styles.loadingMessage}>
           <h2>Logging out...</h2>
-          <div className="spinner"></div>
+          <div className="spinner"></div> {/* Optional spinner */}
         </div>
       ) : (
         <h2>Logged out successfully</h2>
