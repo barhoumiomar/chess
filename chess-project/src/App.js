@@ -11,7 +11,6 @@ import Memes from "./pages/Memes";
 import Profile from "./pages/Profile";
 import Logout from "./pages/LogOut";
 
-
 function App() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [user, setUser] = useState(null);

@@ -12,25 +12,29 @@ const Navbar = ({ onClose }) => {
         <li>
           <Link to="/" style={styles.link}>Home</Link>
         </li>
-        <li>
-          <Link to="/lessons" style={styles.link}>Lessons</Link>
-        </li>
-        <li>
-          <Link to="/practice" style={styles.link}>Practice</Link>
-        </li>
-        <li>
-          <Link to="/quiz" style={styles.link}>Quiz</Link>
-        </li>
-        <li>
-          <Link to="/memes" style={styles.link}>Memes</Link>
-        </li>
+        {isAuthenticated && (
+          <>
+            <li>
+              <Link to="/lessons" style={styles.link}>Lessons</Link>
+            </li>
+            <li>
+              <Link to="/practice" style={styles.link}>Practice</Link>
+            </li>
+            <li>
+              <Link to="/memes" style={styles.link}>Memes</Link>
+            </li>
+            <li>
+              <Link to="/quiz" style={styles.link}>Quiz</Link>
+            </li>
+          </>
+        )}
         {isAuthenticated ? (
           <>
             <li>
               <Link to="/profile" style={styles.link}>Profile</Link>
             </li>
             <li>
-              <Link to="/logout" style={styles.link}>Logout</Link> {/* Logout link */}
+              <Link to="/logout" style={styles.link}>Logout</Link>
             </li>
           </>
         ) : (

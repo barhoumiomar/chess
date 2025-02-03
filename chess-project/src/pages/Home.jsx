@@ -1,5 +1,5 @@
-import React from "react";
-import { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
+
 const Home = ({ user }) => {
   const [greetingMessage, setGreetingMessage] = useState("");
 
@@ -11,16 +11,25 @@ const Home = ({ user }) => {
     }
   }, [user]);
 
+  if (!user) {
+    return (
+      <div style={styles.container}>
+        <div style={styles.mainContent}>
+          <h1 style={styles.title}>♟️ Welcome to ChessClub</h1>
+          <h2 style={styles.subtitle}> you need an account to see the site's content</h2>
+          
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={styles.container}>
       <div style={styles.mainContent}>
-      <h1>Welcome to chessClub</h1>
-      {user ? (
-        <h2 style={styles.greeting}>Hello <span style={styles.username}>{user.username}</span>!</h2>
-      ) : (
-        <h2>Please log in to see personalized content.</h2>
-      )}
-        
+        <h2 style={styles.greeting}>
+          Hello <span style={styles.username}>{user.username}</span>!
+        </h2>
+
         {/* Chessboard Image */}
         <div style={styles.imageContainer}>
           <img
@@ -48,53 +57,54 @@ const Home = ({ user }) => {
             Dive into our carefully crafted chess series to understand the game from beginner to advanced levels. Each series will take you through various chess tactics, strategies, and famous historical games.
           </p>
           <ul style={styles.list}>
-  <li style={styles.listItem}>
-    🌟 <strong>Beginner's Guide:</strong> Learn the basic rules, movements, and setups for chess.
-    <a href="" style={styles.link}>tutorial chess</a>
-  </li>
-  <li style={styles.listItem}>
-    🔍 <strong>Intermediate Tactics:</strong> Master intermediate strategies like pins, forks, and skewers.
-    <a href="https://www.youtube.com/watch?v=goW1cFHaxtU" style={styles.link}>intermediate tactics</a>
-  </li>
-  <li style={styles.listItem}>
-    🏆 <strong>Advanced Techniques:</strong> Explore high-level strategies used by grandmasters.
-    <a href="https://www.youtube.com/watch?v=fGFl4GjVvrA" style={styles.link}>advanced techniques</a>
-  </li>
-  <li style={styles.listItem}>
-    🎓 <strong>Famous Chess Games:</strong> Analyze some of the most famous games in chess history.
-    <a href="https://www.youtube.com/watch?v=LzmSy2N5GaQ" style={styles.link}>Famous chess Games</a>
-  </li>
-</ul>
-</div>
-<div style={styles.section}>
-  <h2 style={styles.sectionTitle}>The Relationship Between Chess and Philosophy</h2>
-  <p style={styles.sectionText}>
-    Chess and philosophy, at first glance, might seem like entirely different pursuits—one is a game, the other a discipline of thought. However, these two worlds are deeply connected in many ways. Both demand clarity of thought, an understanding of logic, and a strategy that can transcend the immediate to look at the bigger picture.
-  </p>
-  <p style={styles.sectionText}>
-    In philosophy, the study of logic involves understanding patterns, relationships, and consequences—ideas that are at the core of chess. Philosophers like René Descartes, Immanuel Kant, and even the ancient Greek philosophers emphasized the importance of clear thinking, something that is mirrored in every move a chess player makes. Chess is often considered a metaphor for life: a battle of wits where strategy, decision-making, and foresight are essential.
-  </p>
-  <p style={styles.sectionText}>
-    Chess requires the player to constantly question, analyze, and reconsider each move, not unlike how philosophical thinking challenges assumptions, pushes boundaries, and seeks the most rational outcomes. Just as a philosopher formulates arguments based on premises and conclusions, a chess player analyzes each position based on the current state of the game, eventually building to a solution. The game’s endless variations echo the infinite complexity of philosophical reasoning.
-  </p>
-  <p style={styles.sectionText}>
-    Chess also teaches the value of patience and discipline—qualities that are emphasized in philosophy. The philosopher spends years contemplating ideas, carefully structuring arguments and considering every counterargument. Similarly, a skilled chess player practices, studies, and meticulously prepares for each game, anticipating every possible outcome. Whether in a game of chess or a philosophical debate, the journey is as important as the destination.
-  </p>
-  <div style={styles.imageContainer}>
-    <img
-      src="https://png.pngtree.com/thumb_back/fh260/background/20230414/pngtree-chess-player-achieving-success-surreal-and-conceptual-scene-of-a-tiny-photo-image_2423278.jpg"
-      alt="Chess and Philosophy"
-      style={styles.image}
-    />
-  </div>
-  <p style={styles.sectionText}>
-    For philosophers like Plato, chess can even be seen as a metaphor for the mind’s relationship with the world. Plato's "Allegory of the Cave" speaks to the notion of understanding reality through intellectual progress, and similarly, in chess, a player gradually increases their understanding of the game as they move from basic concepts to advanced strategies.
-  </p>
-  <p style={styles.sectionText}>
-    In conclusion, chess and philosophy share a profound connection that extends beyond mere logic. Both are intellectual pursuits that foster deep thinking, strategic planning, and self-discipline. The next time you sit down at the chessboard, remember: each move is more than just a step toward checkmate—it's an exercise in the very philosophy of thought itself.
-  </p>
-</div>
-     
+            <li style={styles.listItem}>
+              🌟 <strong>Beginner's Guide:</strong> Learn the basic rules, movements, and setups for chess.
+              <a href="" style={styles.link}>tutorial chess</a>
+            </li>
+            <li style={styles.listItem}>
+              🔍 <strong>Intermediate Tactics:</strong> Master intermediate strategies like pins, forks, and skewers.
+              <a href="https://www.youtube.com/watch?v=goW1cFHaxtU" style={styles.link}>intermediate tactics</a>
+            </li>
+            <li style={styles.listItem}>
+              🏆 <strong>Advanced Techniques:</strong> Explore high-level strategies used by grandmasters.
+              <a href="https://www.youtube.com/watch?v=fGFl4GjVvrA" style={styles.link}>advanced techniques</a>
+            </li>
+            <li style={styles.listItem}>
+              🎓 <strong>Famous Chess Games:</strong> Analyze some of the most famous games in chess history.
+              <a href="https://www.youtube.com/watch?v=LzmSy2N5GaQ" style={styles.link}>Famous chess Games</a>
+            </li>
+          </ul>
+        </div>
+
+        <div style={styles.section}>
+          <h2 style={styles.sectionTitle}>The Relationship Between Chess and Philosophy</h2>
+          <p style={styles.sectionText}>
+            Chess and philosophy, at first glance, might seem like entirely different pursuits—one is a game, the other a discipline of thought. However, these two worlds are deeply connected in many ways. Both demand clarity of thought, an understanding of logic, and a strategy that can transcend the immediate to look at the bigger picture.
+          </p>
+          <p style={styles.sectionText}>
+            In philosophy, the study of logic involves understanding patterns, relationships, and consequences—ideas that are at the core of chess. Philosophers like René Descartes, Immanuel Kant, and even the ancient Greek philosophers emphasized the importance of clear thinking, something that is mirrored in every move a chess player makes. Chess is often considered a metaphor for life: a battle of wits where strategy, decision-making, and foresight are essential.
+          </p>
+          <p style={styles.sectionText}>
+            Chess requires the player to constantly question, analyze, and reconsider each move, not unlike how philosophical thinking challenges assumptions, pushes boundaries, and seeks the most rational outcomes. Just as a philosopher formulates arguments based on premises and conclusions, a chess player analyzes each position based on the current state of the game, eventually building to a solution. The game’s endless variations echo the infinite complexity of philosophical reasoning.
+          </p>
+          <p style={styles.sectionText}>
+            Chess also teaches the value of patience and discipline—qualities that are emphasized in philosophy. The philosopher spends years contemplating ideas, carefully structuring arguments and considering every counterargument. Similarly, a skilled chess player practices, studies, and meticulously prepares for each game, anticipating every possible outcome. Whether in a game of chess or a philosophical debate, the journey is as important as the destination.
+          </p>
+          <div style={styles.imageContainer}>
+            <img
+              src="https://png.pngtree.com/thumb_back/fh260/background/20230414/pngtree-chess-player-achieving-success-surreal-and-conceptual-scene-of-a-tiny-photo-image_2423278.jpg"
+              alt="Chess and Philosophy"
+              style={styles.image}
+            />
+          </div>
+          <p style={styles.sectionText}>
+            For philosophers like Plato, chess can even be seen as a metaphor for the mind’s relationship with the world. Plato's "Allegory of the Cave" speaks to the notion of understanding reality through intellectual progress, and similarly, in chess, a player gradually increases their understanding of the game as they move from basic concepts to advanced strategies.
+          </p>
+          <p style={styles.sectionText}>
+            In conclusion, chess and philosophy share a profound connection that extends beyond mere logic. Both are intellectual pursuits that foster deep thinking, strategic planning, and self-discipline. The next time you sit down at the chessboard, remember: each move is more than just a step toward checkmate—it's an exercise in the very philosophy of thought itself.
+          </p>
+        </div>
+
         {/* Chess in Real Life Section */}
         <div style={styles.section}>
           <h2 style={styles.sectionTitle}>Chess in Real Life</h2>
@@ -168,9 +178,6 @@ const Home = ({ user }) => {
             </ol>
           </p>
         </div>
-        
-
-
 
         <div style={styles.article}>
           <h3 style={styles.articleTitle}>Famous Chess Players Throughout History</h3>
@@ -215,7 +222,7 @@ const Home = ({ user }) => {
 };
 
 const styles = {
-  container: {
+    container: {
     display: "flex",
     justifyContent: "space-between",
     padding: "40px 20px",
@@ -239,16 +246,16 @@ const styles = {
   },
   
   title: {
-    fontSize: "48px",
-    color: "#333",
+    fontSize: "80px",
+    color: "#0968AF",
     marginBottom: "20px",
     fontFamily: "'Georgia', serif",
     fontWeight: "bold",
   },
   subtitle: {
-    fontSize: "20px",
-    color: "#555",
-    marginBottom: "40px",
+    fontSize: "40px",
+    color: "#011423",
+    marginBottom: "20px",
     fontFamily: "'Arial', sans-serif",
   },
   section: {
@@ -320,7 +327,7 @@ const styles = {
     animation: "fadeIn 1s ease-in-out",
   },
   username: {
-    color: "#ff6f61", // This adds a pop of color to the username
+    color: "#59ED78", 
     fontStyle: "italic",
   },
   button: {
