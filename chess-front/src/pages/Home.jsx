@@ -15,7 +15,7 @@ const Home = () => {
   const handleLogout = () => {
     logout(); // Call logout to clear localStorage
   };
-
+  
   return (
     <div>
       <Navbar onLogout={handleLogout} /> {/* Pass the logout function to Navbar */}
