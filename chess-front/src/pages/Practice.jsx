@@ -132,7 +132,16 @@ const Practice = () => {
 };
 
 const styles = {
-  container: { padding: "40px 20px", textAlign: "center", backgroundColor: "#f9f9f9", minHeight: "100vh" },
+  container: {
+    padding: "40px 20px",
+    textAlign: "center",
+    backgroundColor: "#f9f9f9",
+    minHeight: "100vh",  // This ensures the background covers the full height of the viewport
+    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
+    backgroundSize: "cover", // Makes sure the background image covers the entire area
+    backgroundPosition: "center", // Centers the background image
+    backgroundAttachment: "fixed", // Keeps the background fixed while scrolling
+  },
   title: { fontSize: "48px", color: "#333", marginBottom: "20px", fontFamily: "'Georgia', serif" },
   chessboardContainer: { display: "flex", justifyContent: "center", marginTop: "20px" },
   chessboardWrapper: { padding: "20px", backgroundColor: "#fff", borderRadius: "15px", boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)" },
@@ -144,4 +153,4 @@ const styles = {
   resetButton: { marginTop: "20px", padding: "10px 20px", backgroundColor: "#333", color: "#fff", border: "none", borderRadius: "5px", fontSize: "18px", cursor: "pointer" },
 };
 
-export default Practice;
+export default Practice;  

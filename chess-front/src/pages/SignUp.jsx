@@ -38,80 +38,92 @@ const SignUp = ({ onLogin }) => {
   
 
   return (
-    <div style={styles.container}>
-      <h1>Sign Up</h1>
+    <div style={styles.page}>
+      <div style={styles.container}>
+        <h1>Sign Up</h1>
 
-     
-      {successMessage && <p style={styles.success}>{successMessage}</p>}
+        {successMessage && <p style={styles.success}>{successMessage}</p>}
+        {error && <p style={styles.error}>{error}</p>}
 
-      
-      {error && <p style={styles.error}>{error}</p>}
-
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={styles.input}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={styles.input}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          style={styles.input}
-          required
-        />
-        <button type="submit" style={styles.button}>
-          Sign Up
-        </button>
-      </form>
-      <p>
-        Already have an account? <a href="/signin">Sign in here</a>.<br />
-      </p>
+        <form onSubmit={handleSubmit} style={styles.form}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            style={styles.input}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={styles.input}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            style={styles.input}
+            required
+          />
+          <button type="submit" style={styles.button} disabled={!!error}>
+            Sign Up
+          </button>
+        </form>
+        <p>
+          Already have an account? <a href="/login">Sign in here</a>.
+        </p>
+      </div>
     </div>
   );
 };
 
 const styles = {
-  container: {
+  page: {
+    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    minHeight: "100vh",
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     justifyContent: "center",
-    height: "100vh",
-    backgroundColor: "#f9f9f9",
+    alignItems: "center",
+  },
+  container: {
+    maxWidth: "400px",
+    padding: "40px",
+    backgroundColor: "rgba(255, 255, 255, 0.9)", // Semi-transparent for better contrast
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
+    textAlign: "center",
   },
   form: {
     display: "flex",
     flexDirection: "column",
     gap: "10px",
-    width: "300px",
+    width: "100%",
   },
   input: {
     padding: "10px",
     fontSize: "16px",
     borderRadius: "5px",
     border: "1px solid #ccc",
+    width: "100%",
   },
   button: {
     padding: "10px",
     fontSize: "16px",
-    backgroundColor: "#333",
+    backgroundColor: "#0968AF",
     color: "#fff",
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
+    transition: "background-color 0.3s",
   },
   error: {
     color: "red",
@@ -123,5 +135,6 @@ const styles = {
     marginBottom: "10px",
   },
 };
+
 
 export default SignUp;

@@ -47,10 +47,14 @@ const Memes = () => {
 
 const styles = {
   container: {
+    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
+    backgroundSize: "cover",  // Makes sure the background image covers the entire area
+    backgroundPosition: "center",  // Centers the image
+    backgroundAttachment: "fixed",  // Keeps the background fixed while scrolling
     textAlign: "center",
     padding: "20px",
     backgroundColor: "#f9f9f9",
-    minHeight: "100vh",
+    minHeight: "100vh",  // Ensures the background covers the full height of the viewport
   },
   title: {
     fontSize: "36px",
@@ -83,5 +87,6 @@ const styles = {
     borderRadius: "25px",
   },
 };
+
 
 export default Memes;

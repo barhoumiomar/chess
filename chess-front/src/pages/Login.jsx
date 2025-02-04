@@ -48,10 +48,11 @@ const Login = ({ onLogin }) => {
   };
 
   return (
+    <div style={styles.page}>
     <div style={styles.container}>
       <h1>Login</h1>
       {error && <p style={styles.error}>{error}</p>}
-      {loading && <p style={styles.loading}>Logging in...</p>} {/* Show loading message */}
+      {loading && <p style={styles.loading}>Logging in...</p>}
       <form onSubmit={handleLogin} style={styles.form}>
         <div style={styles.formGroup}>
           <label htmlFor="username">Username:</label>
@@ -80,16 +81,27 @@ const Login = ({ onLogin }) => {
         </button>
       </form>
     </div>
-  );
+  </div>
+  )
 };
 
 
 const styles = {
+  page: {
+    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   container: {
     maxWidth: "400px",
-    margin: "0 auto",
     padding: "40px",
-    backgroundColor: "#fff",
+    backgroundColor: "rgba(255, 255, 255, 0.9)", // Semi-transparent background for better readability
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
   },

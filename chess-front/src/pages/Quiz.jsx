@@ -184,13 +184,17 @@ const Quiz = () => {
 // Enhanced CSS styles
 const styles = {
   container: {
+    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
+    backgroundSize: "cover",  // Ensures the background image covers the entire area
+    backgroundPosition: "center",  // Centers the image within the container
+    backgroundAttachment: "fixed",  // Keeps the background fixed while scrolling
     padding: "20px",
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    minHeight: "100vh",
-    backgroundColor: "#f0f2f5",
+    minHeight: "100vh",  // Ensures the background covers the full height of the viewport
+    backgroundColor: "#f0f2f5", // A fallback background color
     fontFamily: "'Arial', sans-serif",
   },
   title: {
@@ -242,5 +246,6 @@ const styles = {
     backgroundColor: "#45a049",
   },
 };
+
 
 export default Quiz;

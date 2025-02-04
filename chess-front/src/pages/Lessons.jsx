@@ -111,10 +111,18 @@ const Lessons = () => {
 
 const styles = {
   container: {
+    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
     padding: "40px 20px",
     textAlign: "center",
-    backgroundColor: "#f9f9f9",
     minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: "48px",
