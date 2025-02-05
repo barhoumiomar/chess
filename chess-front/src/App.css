@@ -1,32 +1,95 @@
-/* src/App.css */
-/* Add smooth transitions for the navbar and content */
+App.css
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f4f9; /* Light background color */
+}
+
+/* Navbar styling */
 .navbar {
-  left: -250px; /* Hide navbar by default */
+  width: 100%;
+  background-color: #5389ff; /* Dark background for navbar */
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure navbar is above other content */
+  transition: transform 0.3s ease;
 }
 
-.navbar.open {
-  left: 0; /* Show navbar when open */
+.navbar-open {
+  transform: translateX(0); /* Show navbar */
 }
 
+/* Overlay for mobile navbar */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Below navbar but above content */
+  display: none; /* Hidden by default */
+}
+
+/* Show overlay when navbar is open */
+.navbar-open + .overlay {
+  display: block;
+}
+
+/* Content area */
 .content {
-  margin-left: 0; /* No margin by default */
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px; /* Offset for fixed navbar */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  margin-top: 80px; /* Additional margin to avoid overlap with navbar */
 }
 
-.content.shifted {
-  margin-left: 250px; /* Shift content when navbar is open */
-}
-/* Spinner animation for loading state */
-.spinner {
-  border: 4px solid #f3f3f3; /* Light gray */
-  border-top: 4px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    transform: translateX(-100%); /* Hide navbar by default on mobile */
+  }
+
+  .navbar-open {
+    transform: translateX(0); /* Show navbar when open */
+  }
+
+  .content {
+    margin-top: 20px; /* Adjust margin for mobile */
+  }
 }
 
-/* Animation for spinner */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Button to toggle navbar (optional) */
+.navbar-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1001; /* Above navbar */
+}
+
+.navbar-toggle:hover {
+  background-color: #0056b3;
 }

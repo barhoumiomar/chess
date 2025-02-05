@@ -1,0 +1,51 @@
+.container {
+  max-width: 11100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e9ecef; /* Light background color */
+  font-family: 'Arial', sans-serif;
+}
+
+.loadingMessage {
+  text-align: center;
+  background-color: #ffffff; /* White background for the box */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  width: 300px; /* Fixed width */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.messageText {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+.spinner.hidden {
+  visibility: hidden; /* Hide spinner when not needed */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.messageText.loggedOut {
+  font-size: 1.5rem;
+  color: #28a745; /* Green color for success */
+  font-weight: 600;
+}

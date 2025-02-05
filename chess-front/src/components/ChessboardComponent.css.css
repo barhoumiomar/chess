@@ -1,0 +1,13 @@
+.chessboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+/* Ensure the chessboard is responsive */
+.react-chessboard {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}

@@ -1,8 +1,7 @@
-// src/components/Memes.jsx
-import React from "react";
+import React, { useState } from "react";
+import "./Memes.css"; // Import the CSS file for styles
 
 const Memes = () => {
-  // Array of chess meme image URLs
   const memes = [
     "https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/AdityaFoundChess/phpCavQrH.png",
     "https://i.pinimg.com/736x/d7/fd/04/d7fd04e6e49946f2fdcab5b219e7cefa.jpg",
@@ -30,63 +29,63 @@ const Memes = () => {
     "https://i.pinimg.com/736x/df/12/28/df1228a4eddc9ac6eb6a20a5d78cbac3.jpg",
   ];
 
+  // Initialize reactions with null (no reaction)
+  const initialReactions = memes.map(() => ({
+    reaction: null, // No reaction initially
+  }));
+
+  const [reactions, setReactions] = useState(initialReactions);
+
+  const handleReaction = (index, reactionType) => {
+    setReactions((prevReactions) => {
+      const newReactions = [...prevReactions];
+      // Toggle reaction: If already reacted, reset; if not, apply the new reaction
+      newReactions[index].reaction =
+        newReactions[index].reaction === reactionType ? null : reactionType;
+      return newReactions;
+    });
+  };
+
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}> Chess Memes😂</h1>
-      <p style={styles.subtitle}>Enjoy some funny chess memes!</p>
-      <div style={styles.memeGrid}>
+    <div className="memes-container">
+      <h1 className="memes-title">Chess Memes 😂</h1>
+      <p className="memes-subtitle">Enjoy some funny chess memes!</p>
+
+      <div className="memes-grid">
         {memes.map((meme, index) => (
-          <div key={index} style={styles.memeCard}>
-            <img src={meme} alt={`Chess Meme ${index + 1}`} style={styles.memeImage} />
+          <div key={index} className="meme-card">
+            <img src={meme} alt={`Chess Meme ${index + 1}`} className="meme-image" />
+            <div className="reaction-buttons">
+              <button
+                onClick={() => handleReaction(index, "like")}
+                className={`reaction-btn ${reactions[index].reaction === "like" ? "active" : ""}`}
+              >
+                ❤️ {reactions[index].reaction === "like" ? "Liked" : "Like"}
+              </button>
+              <button
+                onClick={() => handleReaction(index, "laugh")}
+                className={`reaction-btn ${reactions[index].reaction === "laugh" ? "active" : ""}`}
+              >
+                😂 {reactions[index].reaction === "laugh" ? "Laugh" : "Laugh"}
+              </button>
+              <button
+                onClick={() => handleReaction(index, "wow")}
+                className={`reaction-btn ${reactions[index].reaction === "wow" ? "active" : ""}`}
+              >
+                😮 {reactions[index].reaction === "wow" ? "Wow" : "Wow"}
+              </button>
+              <button
+                onClick={() => handleReaction(index, "dislike")}
+                className={`reaction-btn ${reactions[index].reaction === "dislike" ? "active" : ""}`}
+              >
+                👎 {reactions[index].reaction === "dislike" ? "Disliked" : "Dislike"}
+              </button>
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
 };
-
-const styles = {
-  container: {
-    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
-    backgroundSize: "cover",  // Makes sure the background image covers the entire area
-    backgroundPosition: "center",  // Centers the image
-    backgroundAttachment: "fixed",  // Keeps the background fixed while scrolling
-    textAlign: "center",
-    padding: "20px",
-    backgroundColor: "#f9f9f9",
-    minHeight: "100vh",  // Ensures the background covers the full height of the viewport
-  },
-  title: {
-    fontSize: "36px",
-    color: "#333",
-    marginBottom: "10px",
-    fontFamily: "'Georgia', serif",
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: "18px",
-    color: "#555",
-    marginBottom: "20px",
-    fontFamily: "'Arial', sans-serif",
-  },
-  memeGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-    gap: "10px",
-    justifyContent: "center",
-  },
-  memeCard: {
-    backgroundColor: "#fff",
-    padding: "10px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  },
-  memeImage: {
-    width: "90%",
-    height: "auto",
-    borderRadius: "25px",
-  },
-};
-
 
 export default Memes;

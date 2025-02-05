@@ -1,0 +1,79 @@
+.memes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+}
+
+.memes-title {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.memes-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.memes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+}
+
+.meme-card {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+.meme-card:hover {
+  transform: scale(1.05);
+}
+
+.meme-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.reaction-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.reaction-btn {
+  border: none;
+  background: #eee;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.reaction-btn:hover {
+  background: #ddd;
+}
+
+.reaction-btn.active {
+  background-color: #f0f0f0;
+  color: #000;
+  border: 2px solid #333;
+}

@@ -1,0 +1,12 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.home-user-container, .home-guest-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}

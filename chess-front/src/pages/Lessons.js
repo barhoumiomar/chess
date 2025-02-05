@@ -1,7 +1,7 @@
-// src/pages/Lessons.jsx
 import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
+import "./Lessons.css"; // Import external CSS
 
 const Lessons = () => {
   const [currentLesson, setCurrentLesson] = useState(null);
@@ -75,14 +75,14 @@ const Lessons = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Chess Lessons</h1>
-      <p style={styles.subtitle}>Learn how each chess piece moves.</p>
-      <div style={styles.lessonList}>
+    <div className="">
+      <h1 className="title">Chess Lessons</h1>
+      <p className="subtitle">Learn how each chess piece moves.</p>
+      <div className="lessonList">
         {lessons.map((lesson) => (
           <button
             key={lesson.id}
-            style={styles.lessonButton}
+            className="lessonButton"
             onClick={() => loadLesson(lesson)}
           >
             {lesson.title}
@@ -90,98 +90,26 @@ const Lessons = () => {
         ))}
       </div>
       {currentLesson && (
-        <div style={styles.lessonContent}>
-          <h2 style={styles.lessonTitle}>{currentLesson.title}</h2>
-          <p style={styles.lessonDescription}>{currentLesson.description}</p>
-          <div style={styles.chessboardContainer}>
-            <Chessboard
-              position={currentLesson.fen}
-              boardWidth={400} // Medium-sized chessboard
-              boardStyle={{
-                borderRadius: "10px",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-              }}
-            />
-          </div>
-        </div>
-      )}
+  <div className="lessonContent">
+    <h2 className="lessonTitle">{currentLesson.title}</h2>
+    <div className="chessboardAndDescriptionContainer">
+      <p className="lessonDescription">{currentLesson.description}</p>
+      <div className="chessboardContainer">
+        <Chessboard
+          position={currentLesson.fen}
+          boardWidth={250} // Medium-sized chessboard
+          boardStyle={{
+            borderRadius: "5px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          }}
+        />
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
-};
-
-const styles = {
-  container: {
-    backgroundImage: "url('https://c1.wallpaperflare.com/preview/979/274/351/chess-chess-men-game-chess-pieces.jpg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-    padding: "40px 20px",
-    textAlign: "center",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: "48px",
-    color: "#333",
-    marginBottom: "20px",
-    fontFamily: "'Georgia', serif",
-  },
-  subtitle: {
-    fontSize: "20px",
-    color: "#555",
-    marginBottom: "40px",
-    fontFamily: "'Arial', sans-serif",
-  },
-  lessonList: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "10px",
-    marginBottom: "40px",
-  },
-  lessonButton: {
-    padding: "10px 20px",
-    backgroundColor: "#333",
-    color: "#fff",
-    border: "none",
-    borderRadius: "5px",
-    fontSize: "18px",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-  },
-  lessonContent: {
-    marginTop: "20px",
-    padding: "20px",
-    backgroundColor: "#fff",
-    borderRadius: "20px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    maxWidth: "800px",
-    margin: "0 auto",
-  },
-  lessonTitle: {
-    fontSize: "32px",
-    color: "#333",
-    marginBottom: "20px",
-    fontFamily: "'Georgia', serif",
-  },
-  lessonDescription: {
-    fontSize: "18px",
-    color: "#555",
-    lineHeight: "1.6",
-    marginBottom: "20px",
-    fontFamily: "'Arial', sans-serif",
-  },
-  chessboardContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center", // Center vertically
-    marginTop: "20px",
-    height: "450px", // Set a fixed height for the container
-  },
 };
 
 export default Lessons;

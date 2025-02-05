@@ -1,7 +1,7 @@
-// src/components/Chessboard.jsx
 import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
+import './ChessboardComponent.css';  // Import external CSS file
 
 const ChessboardComponent = () => {
   const [game, setGame] = useState(new Chess());
@@ -19,7 +19,7 @@ const ChessboardComponent = () => {
   };
 
   return (
-    <div>
+    <div className="chessboard-container">
       <Chessboard position={game.fen()} onPieceDrop={onDrop} />
     </div>
   );
