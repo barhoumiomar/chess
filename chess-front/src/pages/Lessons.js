@@ -97,7 +97,7 @@ const Lessons = () => {
       <div className="chessboardContainer">
         <Chessboard
           position={currentLesson.fen}
-          boardWidth={250} // Medium-sized chessboard
+          boardWidth={310} // Medium-sized chessboard
           boardStyle={{
             borderRadius: "5px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
