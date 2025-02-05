@@ -44,7 +44,10 @@ label {
   color: #aaa;
   transition: all 0.3s;
 }
-
+.captcha-text{
+  font-size: 18px;
+  font-style: italic;
+}
 .input {
   width: 100%;
   padding: 12px;

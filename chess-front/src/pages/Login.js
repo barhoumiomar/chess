@@ -1,52 +1,71 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; // Import the CSS file
+import "./Login.css";
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [authenticating, setAuthenticating] = useState(false); // For the authentication message
+  const [authenticating, setAuthenticating] = useState(false);
+  const [captcha, setCaptcha] = useState("");
+  const [generatedCaptcha, setGeneratedCaptcha] = useState("");
   const navigate = useNavigate();
+
+  const generateCaptcha = () => {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let captchaText = "";
+    for (let i = 0; i < 6; i++) {
+      captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    setGeneratedCaptcha(captchaText);
+  };
+
+  React.useEffect(() => {
+    generateCaptcha();
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(""); 
+    setError("");
     setLoading(true);
+
+    if (captcha !== generatedCaptcha) {
+      setError("Captcha does not match");
+      setLoading(false);
+      return;
+    }
 
     console.log({ username, password });
 
     try {
-      // Simulate a 4-second delay for the login process
       setTimeout(async () => {
         try {
-          // Simulate API call after 4 seconds (the real API call happens here)
-          const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
-          console.log(res.data); 
+          const res = await axios.post("http://localhost:5000/api/auth/login", {
+            username,
+            password,
+          });
 
-          // Simulate a delay for authentication
-          setAuthenticating(true); // Show the "Authentication..." message
+          console.log(res.data);
+          setAuthenticating(true);
 
           setTimeout(() => {
-            // After a brief delay, complete the authentication process
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("user", JSON.stringify({ username })); 
+            localStorage.setItem("user", JSON.stringify({ username }));
 
             onLogin({ username });
             navigate("/");
 
-            setLoading(false); 
-            setAuthenticating(false); // Hide the "Authentification..." message
-          }, 2000); // 2-second delay to show "Authentification..." message
-
+            setLoading(false);
+            setAuthenticating(false);
+          }, 2000);
         } catch (err) {
-          console.error(err.response); 
+          console.error(err.response);
           setError(err.response?.data?.message || "Invalid username or password");
-          setLoading(false); 
+          setLoading(false);
         }
-      }, 4000); // 4-second delay for the "Logging in..." message
+      }, 4000);
     } catch (err) {
       console.error(err);
       setLoading(false);
@@ -85,6 +104,18 @@ const Login = ({ onLogin }) => {
             />
             <label htmlFor="password">Password:</label>
           </div>
+          <div className="formGroup">
+            <p className="captcha-text">{generatedCaptcha}</p>
+            <input
+              type="text"
+              id="captcha"
+              value={captcha}
+              onChange={(e) => setCaptcha(e.target.value)}
+              className="input"
+              required
+              placeholder="Enter CAPTCHA"
+            />
+          </div>
           <button type="submit" className="button" disabled={loading}>
             Login
           </button>
@@ -92,7 +123,7 @@ const Login = ({ onLogin }) => {
             Create an account <a href="/signup">Sign up here</a>.
           </p>
         </form>
-      </div>
+      </div>  
     </div>
   );
 };
