@@ -18,7 +18,7 @@ const Logout = ({ onLogout }) => {
 
       // Redirect to the HomeGuest page after logout
       navigate("/"); // Redirect to HomeGuest page
-    }, 3000); // 3-second delay before logout
+    }, 7000); // 3-second delay before logout
 
     // Inject spinner keyframes rule dynamically
     const injectKeyframes = () => {

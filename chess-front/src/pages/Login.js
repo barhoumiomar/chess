@@ -8,6 +8,7 @@ const Login = ({ onLogin }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [authenticating, setAuthenticating] = useState(false); // For the authentication message
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -18,23 +19,34 @@ const Login = ({ onLogin }) => {
     console.log({ username, password });
 
     try {
+      // Simulate a 4-second delay for the login process
       setTimeout(async () => {
         try {
+          // Simulate API call after 4 seconds (the real API call happens here)
           const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
           console.log(res.data); 
 
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("user", JSON.stringify({ username })); 
+          // Simulate a delay for authentication
+          setAuthenticating(true); // Show the "Authentication..." message
 
-          onLogin({ username });
-          navigate("/");
+          setTimeout(() => {
+            // After a brief delay, complete the authentication process
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user", JSON.stringify({ username })); 
+
+            onLogin({ username });
+            navigate("/");
+
+            setLoading(false); 
+            setAuthenticating(false); // Hide the "Authentification..." message
+          }, 2000); // 2-second delay to show "Authentification..." message
+
         } catch (err) {
           console.error(err.response); 
           setError(err.response?.data?.message || "Invalid username or password");
-        } finally {
           setLoading(false); 
         }
-      }, 2000); 
+      }, 4000); // 4-second delay for the "Logging in..." message
     } catch (err) {
       console.error(err);
       setLoading(false);
@@ -46,7 +58,8 @@ const Login = ({ onLogin }) => {
       <div className="container">
         <h1>Login</h1>
         {error && <p className="error">{error}</p>}
-        {loading && <p className="loading">Logging in...</p>}
+        {loading && !authenticating && <p className="loading">Logging in...</p>}
+        {authenticating && <p className="loading">Authentification...</p>}
         <form onSubmit={handleLogin} className="form">
           <div className="formGroup">
             <input
@@ -75,6 +88,9 @@ const Login = ({ onLogin }) => {
           <button type="submit" className="button" disabled={loading}>
             Login
           </button>
+          <p>
+            Create an account <a href="/signup">Sign up here</a>.
+          </p>
         </form>
       </div>
     </div>

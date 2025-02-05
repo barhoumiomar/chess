@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HomeUser from "./HomeUser";
 import HomeGuest from "./HomeGuest";
 import Navbar from "../components/Navbar";
-import useAuth from "../hooks/useAuth"; // Import the custom hook
-import "./Home.css"; // Import the CSS file
+import useAuth from "../hooks/useAuth";
+import "./Home.css";
 
 const Home = () => {
-  const { user, logout } = useAuth(); // Use the useAuth hook for managing user state and logout
-
-  useEffect(() => {
-    // Whenever the component mounts, the user state is automatically set by useAuth
-  }, [user]);
-
-  const handleLogout = () => {
-    logout(); // Call logout to clear localStorage
-  };
+  const { user, login, logout } = useAuth();
 
   return (
     <div className="home">
-      <Navbar onLogout={handleLogout} /> {/* Pass the logout function to Navbar */}
-      {user ? <HomeUser user={user} /> : <HomeGuest />} {/* Show HomeUser or HomeGuest based on the user state */}
+      <Navbar onLogin={login} />
+      {user ? <HomeUser user={user} /> : <HomeGuest />}
     </div>
   );
 };

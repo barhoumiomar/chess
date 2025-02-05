@@ -66,11 +66,7 @@ const Navbar = ({ onClose }) => {
           </>
         )}
       </ul>
-
-      {/* Mobile menu toggle (optional) */}
-      <button className="navbar-toggle" onClick={onClose}>
-        ☰
-      </button>
+      
     </div>
   );
 };
