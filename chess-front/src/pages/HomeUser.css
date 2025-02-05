@@ -11,6 +11,16 @@ body {
   justify-content: space-between;
   padding: 40px;
   gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+  flex: 1;
+  background: #1a1a2e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
 }
 
 /* Main Content */
@@ -19,6 +29,16 @@ body {
   background: #1a1a2e;
   padding: 30px;
   border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+  flex: 1;
+  background: #1a1a2e;
+  padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
 }
 
@@ -87,7 +107,6 @@ body {
   box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
 }
 
-
 /* Chess Series List */
 .list {
   list-style: none;
@@ -142,7 +161,6 @@ body {
   transform: scale(1.05) rotate(0deg);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
-
 
 .article-title {
   font-size: 18px;

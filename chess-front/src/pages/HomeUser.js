@@ -31,6 +31,29 @@ const HomeUser = ({ user }) => {
 
   return (
     <div className="home-user-container">
+      {/* Left Sidebar */}
+      <div className="left-sidebar">
+        <div className="sidebar-section">
+          <h2 className="sidebar-title">Upcoming Events</h2>
+          <ul className="events-list">
+            {upcomingEvents.map((event, index) => (
+              <li key={index} className="event-item">
+                <strong>{event.name}</strong> - {event.date}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="sidebar-section">
+          <h2 className="sidebar-title">Latest Chess News</h2>
+          <ul className="news-list">
+            <li><a href="https://www.chess.com/news/view/latest-chess-news" className="news-link">Latest News</a></li>
+            <li><a href="https://www.chess.com/news/view/famous-chess-games" className="news-link">Famous Games</a></li>
+            <li><a href="https://www.chess.com/news/view/chess-tournaments" className="news-link">Upcoming Tournaments</a></li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Main Content (Center) */}
       <div className="main-content">
         <h2 className="greeting">
           Hey! Welcome back <span className="username">{user.username}</span>! How are you today?
@@ -55,11 +78,7 @@ const HomeUser = ({ user }) => {
           <p className="section-text">
             Dive into our carefully crafted chess series to understand the game from beginner to advanced levels. Each series will take you through various chess tactics, strategies, and famous historical games.
           </p>
-          <ul classN
-          
-          
-          
-          ame="list">
+          <ul className="list">
             <li className="list-item">
               🌟 <strong>Beginner's Guide:</strong> Learn the basic rules, movements, and setups for chess.
               <a href="" className="link">tutorial chess</a>
@@ -78,91 +97,28 @@ const HomeUser = ({ user }) => {
             </li>
           </ul>
         </div>
-
-        {/* Chess Championships 2025 Section */}
-        <div className="section-championships">
-          <h2 className="section-title">Chess Championships 2025</h2>
-          <p className="section-text">
-            Stay updated with the latest news and insights on the 2025 Chess Championships. The year promises some of the most exciting games with top grandmasters competing for the crown.
-          </p>
-
-          {/* Flex container to arrange articles in columns */}
-          <div className="article-container">
-            {/* Article 1 */}
-            <div className="article">
-              <h3 className="article-title">Gukesh Scores 5th Win! Abdusattorov, Praggnanandhaa In Hot Pursuit</h3>
-              <p className="article-text">
-                GM Gukesh Dommaraju pounced on a far from obvious mistake by GM Max Warmerdam to retain the sole lead on 7.5/10 going into the final 2025 Tata Steel Chess Masters rest day...
-              </p>
-              <a href="https://www.chess.com/news/view/2025-tata-steel-chess-round-10" className="article-link">Read More</a>
-            </div>
-
-            {/* Article 2 */}
-            <div className="article">
-              <h3 className="article-title">King Of Bullet Brawl Returns To Win 35th Title</h3>
-              <p className="article-text">
-                The king of Bullet Brawl, GM Hikaru Nakamura, returned to the top of Chess.com's high-speed titled arena on Saturday, claiming the $400 first prize and extending his all-time win count to 35...
-              </p>
-              <a href="https://www.chess.com/news/view/hikaru-nakamura-wins-bullet-brawl-february-1-2025" className="article-link">Read More</a>
-            </div>
-
-            {/* Article 3 */}
-            <div className="article">
-              <h3 className="article-title">Carlsen Returns To Classical, Set For 1st Meeting With World Champion Gukesh</h3>
-              <p className="article-text">
-                The 13th edition of Norway Chess will see the first classical meeting between World Champion GM Gukesh Dommaraju and world number-one GM Magnus Carlsen...
-              </p>
-              <a href="https://www.chess.com/news/view/2025-norway-chess-announced-carlsen-faces-world-champion-gukesh" className="article-link">Watch Now</a>
-            </div>
-          </div>
-        </div>
+        
       </div>
-
+        
       {/* Right Sidebar */}
       <div className="right-sidebar">
-        {/* Top 10 Famous Players Section */}
         <div className="sidebar-section">
           <h2 className="sidebar-title">Top 10 Famous Chess Players</h2>
           <ul className="player-list">
-  {topPlayers.map((player, index) => (
-    <li key={index} className="player-item">
-      <strong>
-        <a
-          href={`https://en.wikipedia.org/wiki/${player.name.replace(" ", "_")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="player-link"
-        >
-          {player.name}
-        </a>
-      </strong> - {player.career}
-    </li>
-  ))}
-</ul>
-
-        </div>
-
-        
-
-        {/* Upcoming Events Section */}
-        <div className="sidebar-section">
-          <h2 className="sidebar-title">Upcoming Events</h2>
-          <ul className="events-list">
-            {upcomingEvents.map((event, index) => (
-              <li key={index} className="event-item">
-                <strong>{event.name}</strong> - {event.date}
+            {topPlayers.map((player, index) => (
+              <li key={index} className="player-item">
+                <strong>
+                  <a
+                    href={`https://en.wikipedia.org/wiki/${player.name.replace(" ", "_")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="player-link"
+                  >
+                    {player.name}
+                  </a>
+                </strong> - {player.career}
               </li>
             ))}
-          </ul>
-        </div>
-
-        {/* News Section */}
-        <div className="sidebar-section">
-          <h2 className="sidebar-title">Latest Chess News</h2>
-          <ul className="news-list">
-            <li><a href="https://www.chess.com/news/view/latest-chess-news" className="news-link">Latest News</a></li>
-            <li><a href="https://www.chess.com/news/view/famous-chess-games" className="news-link">Famous Games</a></li>
-            <li><a href="https://www.chess.com/news/view/chess-tournaments" className="news-link">Upcoming Tournaments</a></li>
           </ul>
         </div>
       </div>
