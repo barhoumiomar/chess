@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
-import './SignUp.css';  // Import external CSS file
+import { useNavigate } from "react-router-dom";
+import "./SignUp.css";
 
 const SignUp = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -13,25 +13,34 @@ const SignUp = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-  
+
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", { username, password });
-  
+      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+        username,
+        password,
+      });
+
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
       }
-  
-      navigate("/login"); 
+
+      // Show success message after successful signup
+      setSuccessMessage("Signup successful! Redirecting to login...");
+
+      // Redirect to the HomeGuest page after 2 seconds (for the user to see the success message)
+      setTimeout(() => {
+        navigate("/login"); // Redirect to HomeGuest page
+      }, 2000); // You can adjust the time to your preference
     } catch (err) {
       setError(err.response?.data?.message || err.message || "Something went wrong");
     }
   };
-  
+
   return (
     <div className="page">
       <div className="container">
@@ -69,9 +78,6 @@ const SignUp = ({ onLogin }) => {
             Sign Up
           </button>
         </form>
-        <p>
-          Already have an account? <a href="/login">Sign in here</a>.
-        </p>
       </div>
     </div>
   );

@@ -14,7 +14,8 @@ const Login = ({ onLogin }) => {
   const navigate = useNavigate();
 
   const generateCaptcha = () => {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let captchaText = "";
     for (let i = 0; i < 6; i++) {
       captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -119,9 +120,6 @@ const Login = ({ onLogin }) => {
           <button type="submit" className="button" disabled={loading}>
             Login
           </button>
-          <p>
-            Create an account <a href="/signup">Sign up here</a>.
-          </p>
         </form>
       </div>
     </div>

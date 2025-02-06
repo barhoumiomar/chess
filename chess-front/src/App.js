@@ -9,7 +9,8 @@ import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Memes from "./pages/Memes";
 import Logout from "./pages/LogOut";
-import './App.css'; // Import external CSS file
+import HomeGuest from "./pages/HomeGuest";
+import "./App.css";
 
 function App() {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -28,18 +29,28 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-
-        <div className={`navbar ${showNavbar ? "navbar-open" : ""}`}>
-          <Navbar onClose={() => setShowNavbar(false)} />
-        </div>
+        {user && (
+          <div className={`navbar ${showNavbar ? "navbar-open" : ""}`}>
+            <Navbar onClose={() => setShowNavbar(false)} />
+          </div>
+        )}
 
         {showNavbar && (
           <div className="overlay" onClick={() => setShowNavbar(false)} />
         )}
 
-        <div className="content">
+        <div className="">
           <Routes>
-            <Route path="/" element={<Home user={user} />} />
+            <Route
+              path="/"
+              element={
+                user ? (
+                  <Home user={user} />
+                ) : (
+                  <HomeGuest onLogin={handleLogin} />
+                )
+              }
+            />
             <Route path="/lessons" element={<Lessons />} />
             <Route path="/practice" element={<Practice />} />
             <Route path="/quiz" element={<Quiz />} />

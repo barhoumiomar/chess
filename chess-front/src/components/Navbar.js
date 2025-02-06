@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // Import the updated CSS
+import "./Navbar.css";
 
 const Navbar = ({ onClose }) => {
-  const isAuthenticated = localStorage.getItem("token"); // Check if the user is authenticated
+  const [isOpen, setIsOpen] = useState(false);
+  const isAuthenticated = localStorage.getItem("token");
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <div className="navbar">
-      {/* Logo or brand name (optional) */}
+    <nav className="navbar">
       <div className="logo">ChessClub</div>
 
-      {/* Navbar links */}
-      <ul className="nav-list">
-        {/* Always show Home link */}
+      {/* Navbar Toggle Button for Mobile */}
+      <button className="navbar-toggle" onClick={toggleNavbar}>
+        ☰
+      </button>
+
+      <ul className={`nav-list ${isOpen ? "navbar-open" : ""}`}>
         <li>
           <Link to="/" className="link" onClick={onClose}>
             Home
           </Link>
         </li>
 
-        {/* If the user is authenticated, show these links */}
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <>
             <li>
               <Link to="/lessons" className="link" onClick={onClose}>
@@ -48,10 +54,7 @@ const Navbar = ({ onClose }) => {
               </Link>
             </li>
           </>
-        )}
-
-        {/* If the user is NOT authenticated, show Login and Sign Up links */}
-        {!isAuthenticated && (
+        ) : (
           <>
             <li>
               <Link to="/login" className="link" onClick={onClose}>
@@ -66,8 +69,7 @@ const Navbar = ({ onClose }) => {
           </>
         )}
       </ul>
-      
-    </div>
+    </nav>
   );
 };
 
