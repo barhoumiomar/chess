@@ -14,14 +14,14 @@
 
 .title {
   font-size: 48px;
-  color: #333;
+  color: #180606;
   margin-bottom: 20px;
   font-family: 'Georgia', serif;
 }
 
 .subtitle {
-  font-size: 20px;
-  color: #555;
+  font-size: 21px;
+  color: #240b0b;
   margin-bottom: 40px;
   font-family: 'Arial', sans-serif;
 }
@@ -36,7 +36,7 @@
 
 .lessonButton {
   padding: 10px 20px;
-  background-color: #09eb94;
+  background-color: #000768;
   color: #fff;
   border: none;
   border-radius: 5px;

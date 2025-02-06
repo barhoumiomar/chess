@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import "./Lessons.css"; // Import external CSS
-
 const Lessons = () => {
   const [currentLesson, setCurrentLesson] = useState(null);
 

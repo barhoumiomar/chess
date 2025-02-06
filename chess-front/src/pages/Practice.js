@@ -87,7 +87,7 @@
             onPieceDrop={onDrop}
             onSquareClick={onSquareClick}
             customSquareStyles={customSquareStyles}
-            boardWidth={500}
+            boardWidth={380}
             boardStyle={{
               borderRadius: "10px",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",

@@ -4,20 +4,20 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f9f9f9;
+  
   text-align: center;
   padding: 20px;
 }
 
 .memes-title {
   font-size: 32px;
-  color: #333;
+  color: #0c0303;
   margin-bottom: 10px;
 }
 
 .memes-subtitle {
-  font-size: 18px;
-  color: #666;
+  font-size: 20px;
+  color: #290909;
   margin-bottom: 20px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .meme-card {
-  background: white;
+  background: rgb(65, 53, 53);
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -40,18 +40,20 @@
 }
 
 .meme-card:hover {
+  background: rgb(109, 38, 38);
   transform: scale(1.05);
 }
 
 .meme-image {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 5px;
   max-height: 300px;
   object-fit: cover;
 }
 
 .reaction-buttons {
+  
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -60,7 +62,7 @@
 
 .reaction-btn {
   border: none;
-  background: #eee;
+  background: #cc0336;
   padding: 8px 12px;
   font-size: 16px;
   border-radius: 8px;
@@ -69,7 +71,7 @@
 }
 
 .reaction-btn:hover {
-  background: #ddd;
+  background: #ff0000;
 }
 
 .reaction-btn.active {

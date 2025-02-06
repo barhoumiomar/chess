@@ -123,7 +123,7 @@ const Login = ({ onLogin }) => {
             Create an account <a href="/signup">Sign up here</a>.
           </p>
         </form>
-      </div>  
+      </div>
     </div>
   );
 };

@@ -45,7 +45,7 @@ const Logout = ({ onLogout }) => {
   return (
     <div className="container">
       {loading ? (
-        <div className="l">
+        <div className="">
           <h2 className="messageText">Logging out...</h2>
           <div className="spinner"></div>
         </div>
