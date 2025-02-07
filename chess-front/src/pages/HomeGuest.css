@@ -17,8 +17,8 @@ body {
 
 /* Left Section (Welcome Message) */
 .welcome-section {
-  margin-left: 350px;
-  margin-top: -180px;
+  margin-left: 360px;
+  margin-top: -190px;
   flex: 1;
   max-width: 750px;
   padding-right: 50px;
@@ -42,10 +42,10 @@ body {
   margin-right: 1190px;
   top: 50%;
   transform: translateY(-55%) translateX(20%); 
-  width: 280px; /* Compact width */
+  width: 290px; /* Compact width */
   background: linear-gradient(135deg, #b6ae95, #ffeb99); /* Soft beige to pale yellow */
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
