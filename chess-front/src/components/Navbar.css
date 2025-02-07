@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
+  background-color: #181625;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -14,11 +14,41 @@
 }
 
 /* Navbar logo */
+/* Bouncing logo animation */
+/* Slide in from the left */
+/* Color change animation */
 .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
+  animation: colorChange 5s ease-in-out infinite;
+  font-size: 30px;
+  color: #084ad6;
 }
+
+@keyframes colorChange {
+  0% {
+    color: red;
+  }
+  50% {
+    color: rgb(255, 145, 0);
+  }
+  100% {
+    color: rgb(101, 247, 4);
+  }
+  100% {
+    color: rgb(11, 175, 161);
+  }100% {
+    color: rgb(7, 9, 124);
+  }100% {
+    color: rgb(99, 8, 71);
+  }
+  100% {
+    color: rgb(185, 10, 54);
+  }
+}
+
+
+
+
+
 
 /* Navbar list */
 .nav-list {
@@ -31,7 +61,7 @@
 
 /* Navbar links */
 .link {
-  color: white;
+  color: rgb(18, 203, 228);
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease;
