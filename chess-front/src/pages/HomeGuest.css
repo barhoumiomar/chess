@@ -1,3 +1,161 @@
+/* HomeGuest.css */
+.mainContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url('https://i.pinimg.com/originals/33/f2/3d/33f23d8e47230bb2ae217a2aba426a75.gif'); /* Add the path to your GIF */
+  background-size: cover; /* Ensure the GIF covers the entire background */
+  background-position: center; /* Center the GIF */
+  background-repeat: no-repeat; /* Prevent the GIF from repeating */
+  position: relative; /* Required for the overlay */
+}
+
+/* Overlay to ensure content is readable */
+.mainContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2; /* Ensure the overlay is above the background */
+}
+
+.welcome-section {
+  margin-left: 360px;
+  margin-top: -190px;
+  flex: 1;
+  max-width: 750px;
+  padding-right: 50px;
+  text-align: left;
+  position: relative; /* Ensure it's above the overlay */
+  z-index: 2; /* Ensure it's above the overlay */
+}
+
+.title {
+  font-size: 3.5rem;
+  color: #1877f2; /* Facebook blue */
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #1c1e21;
+}
+
+.auth-container {
+  position: absolute;
+  margin-right: 1190px;
+  top: 50%;
+  transform: translateY(-55%) translateX(20%);
+  width: 290px;
+  background: #635c45; /* Soft yellow background */
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative; /* Ensure it's above the overlay */
+  z-index: 2; /* Ensure it's above the overlay */
+}
+
+.auth-container h1 {
+  font-size: 1.25rem;
+  color: #1c1e21;
+  margin-bottom: 15px;
+}
+
+.formGroup {
+  margin-bottom: 1px;
+  text-align: left;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dddfe2;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #1877f2;
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button:hover {
+  background-color: #166fe5;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #1877f2;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.toggle-button:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.success {
+  color: #28a745;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mainContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .welcome-section {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .auth-container {
+    width: 100%;
+    max-width: 350px;
+    padding: 10px;
+  }
+}
+
 /* General Styles */
 body {
   margin: 0;
@@ -17,12 +175,14 @@ body {
 
 /* Left Section (Welcome Message) */
 .welcome-section {
-  margin-left: 360px;
-  margin-top: -190px;
+  margin-left: 600px;
+  margin-right: 350px;
+  margin-top: -270px;
+  margin-bottom: -350px;
   flex: 1;
-  max-width: 750px;
+  max-width: 1150px;
   padding-right: 50px;
-  text-align: left;
+  text-align: center;
 }
 
 .title {
@@ -33,7 +193,7 @@ body {
 
 .subtitle {
   font-size: 1.5rem;
-  color: #1c1e21;
+  color: #0146ad;
 }
 
 /* Right Section (Login/Signup Form) */
@@ -43,7 +203,7 @@ body {
   top: 50%;
   transform: translateY(-55%) translateX(20%); 
   width: 290px; /* Compact width */
-  background: linear-gradient(135deg, #b6ae95, #ffeb99); /* Soft beige to pale yellow */
+  background: linear-gradient(135deg, #646055, #e2e6ac); /* Soft beige to pale yellow */
   padding: 10px;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);

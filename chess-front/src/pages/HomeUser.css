@@ -9,14 +9,13 @@ body {
 .home-user-container {
   display: flex;
   justify-content: space-between;
-  padding: 40px;
-  gap: 20px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 /* Left Sidebar */
 .left-sidebar {
-  flex: 1;
+  flex: 0.75;
   background: #1a1a2e;
   padding: 20px;
   border-radius: 10px;
@@ -25,7 +24,7 @@ body {
 
 /* Main Content */
 .main-content {
-  flex: 3;
+  flex: 3.5;
   background: #1a1a2e;
   padding: 30px;
   border-radius: 12px;
@@ -362,5 +361,71 @@ body {
 @media (max-width: 768px) {
   .tutorial-guide {
     flex: 1 1 calc(100% - 20px); /* Stacks them vertically on small screens */
+  }
+}
+.chess-carousel {
+  overflow: hidden;
+  border-radius: 2%;
+  position: relative;
+  padding: 20px 0;
+  background-color: #071941;
+}
+
+.chess-images-container {
+  border-radius: 15px;
+  display: flex;
+  width: 30%;
+  animation: moveCarousel 50s infinite;  /* Total of 75s for 5 images moving every 15s */
+}
+
+.chess-image {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 0;
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Keyframes to animate the carousel */
+@keyframes moveCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
