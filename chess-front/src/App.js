@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Memes from "./pages/Memes";
 import Logout from "./pages/LogOut";
 import HomeGuest from "./pages/HomeGuest";
+import ChessClubFooter from "./pages/ChessClubFooter";
 import "./App.css";
 
 function App() {
@@ -39,16 +40,12 @@ function App() {
           <div className="overlay" onClick={() => setShowNavbar(false)} />
         )}
 
-        <div className="">
+        <div className="content">
           <Routes>
             <Route
               path="/"
               element={
-                user ? (
-                  <Home user={user} />
-                ) : (
-                  <HomeGuest onLogin={handleLogin} />
-                )
+                user ? <Home user={user} /> : <HomeGuest onLogin={handleLogin} />
               }
             />
             <Route path="/lessons" element={<Lessons />} />
@@ -60,6 +57,9 @@ function App() {
             <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
           </Routes>
         </div>
+
+        {/* Show Footer only when the user is authenticated */}
+        {user && <ChessClubFooter />}
       </div>
     </Router>
   );
