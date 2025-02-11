@@ -1,0 +1,59 @@
+/* Events.css */
+
+.events-container {
+    
+    background-color: #fff; /* White background for clean look */
+    padding: 40px;
+    margin: 20px auto; 
+    margin-top: 100px;
+    max-width: 800px; /* Limits the width of the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    font-family: Arial, sans-serif;
+  }
+  
+  .events-container h1 {
+    font-size: 36px;
+    color: #2d3b44; /* Dark blue color for the title */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .events-container p {
+    font-size: 18px;
+    color: #555; /* Dark gray text */
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .events-container ul {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+    text-align: center; /* Centers the list items */
+  }
+  
+  .events-container ul li {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px; /* Adds space between list items */
+  }
+  
+  .events-container ul li strong {
+    color: #0066cc; /* Blue for event names */
+  }
+  
+  .events-container ul li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .events-container a {
+    color: #0066cc; /* Blue links */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .events-container a:hover {
+    text-decoration: underline;
+  }
+  

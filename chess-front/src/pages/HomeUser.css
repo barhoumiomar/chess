@@ -30,6 +30,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
   width: 100%;
+  
 }
 
 /* Right Sidebar */
@@ -132,6 +133,7 @@ body {
 
 /* Chess Championships Articles */
 .article-container {
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -147,6 +149,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   transition: transform 0.3s ease-in-out;
+  
 }
 
 .article:nth-child(odd) {
@@ -315,6 +318,7 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+  
 }
 
 /* Tutorial Guide */
@@ -375,7 +379,7 @@ body {
   border-radius: 15px;
   display: flex;
   width: 30%;
-  animation: moveCarousel 50s infinite;  /* Total of 75s for 5 images moving every 15s */
+  animation: moveCarousel 35s infinite;  /* Total of 75s for 5 images moving every 15s */
 }
 
 .chess-image {

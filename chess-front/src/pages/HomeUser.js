@@ -124,6 +124,7 @@ const HomeUser = ({ user }) => {
         </div>
         
       </div>
+      
       {/* Chess Images Section */}
 <div className="chess-carousel">
 <h2 className="section-title">this is what you need to learn about chess</h2>
@@ -203,7 +204,6 @@ const HomeUser = ({ user }) => {
     </div>
   </div>
 </div>
-
 
 
       {/* Articles Section */}

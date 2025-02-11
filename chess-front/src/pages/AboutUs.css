@@ -1,0 +1,41 @@
+/* AboutUs.css */
+
+.about-us-container {
+    background-color: #f4f4f4; /* Light gray background */
+    padding: 40px;
+    margin: 20px auto;
+    margin-top: 100px;
+    max-width: 800px; /* Limits the width of the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  .about-us-container h1 {
+    font-size: 36px;
+    color: #2d3b44; /* Darker blue color for the heading */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-container p {
+    font-size: 18px;
+    color: #555; /* Dark gray for the paragraph text */
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-container p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .about-us-container a {
+    color: #0066cc; /* Blue links */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .about-us-container a:hover {
+    text-decoration: underline;
+  }
+  

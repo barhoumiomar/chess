@@ -10,9 +10,10 @@
 }
 
 .quiz-title {
+  margin-top: 70px;
   text-align: center;
   font-size: 32px;
-  color: #300707;
+  color: #c20606;
 }
 
 .quiz-subtitle {

@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
 
   const generateCaptcha = () => {
     const chars =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      "abcdefghijklmnopqrstuvwxyz0123456789";
     let captchaText = "";
     for (let i = 0; i < 6; i++) {
       captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -27,51 +27,35 @@ const Login = ({ onLogin }) => {
     generateCaptcha();
   }, []);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  // Login.js
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
 
-    if (captcha !== generatedCaptcha) {
-      setError("Captcha does not match");
-      setLoading(false);
-      return;
-    }
+  if (captcha !== generatedCaptcha) {
+    setError("Captcha does not match");
+    setLoading(false);
+    return;
+  }
 
-    console.log({ username, password });
+  try {
+    const res = await axios.post("http://localhost:5000/api/auth/login", {
+      username,
+      password,
+    });
 
-    try {
-      setTimeout(async () => {
-        try {
-          const res = await axios.post("http://localhost:5000/api/auth/login", {
-            username,
-            password,
-          });
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify({ username }));
 
-          console.log(res.data);
-          setAuthenticating(true);
-
-          setTimeout(() => {
-            localStorage.setItem("token", res.data.token);
-            localStorage.setItem("user", JSON.stringify({ username }));
-
-            onLogin({ username });
-            navigate("/");
-
-            setLoading(false);
-            setAuthenticating(false);
-          }, 2000);
-        } catch (err) {
-          console.error(err.response);
-          setError(err.response?.data?.message || "Invalid username or password");
-          setLoading(false);
-        }
-      }, 4000);
-    } catch (err) {
-      console.error(err);
-      setLoading(false);
-    }
-  };
+    onLogin({ username });
+    navigate("/");
+  } catch (err) {
+    setError(err.response?.data?.message || "Invalid username or password");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="page">

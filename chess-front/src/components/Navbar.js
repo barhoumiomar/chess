@@ -12,17 +12,14 @@ const Navbar = ({ onClose }) => {
 
   return (
     <nav className="navbar">
-      <div className="logo">ChessClub</div>
+      <div className="logo">ChessClub♔♕♖♗♘♙</div>
+      
 
-      {/* Navbar Toggle Button for Mobile */}
-      <button className="navbar-toggle" onClick={toggleNavbar}>
-        ☰
-      </button>
-
+     
       <ul className={`nav-list ${isOpen ? "navbar-open" : ""}`}>
         <li>
           <Link to="/" className="link" onClick={onClose}>
-            Home
+          🏠Home
           </Link>
         </li>
 
@@ -30,27 +27,27 @@ const Navbar = ({ onClose }) => {
           <>
             <li>
               <Link to="/lessons" className="link" onClick={onClose}>
-                Lessons
+              📚Lessons
               </Link>
             </li>
             <li>
               <Link to="/practice" className="link" onClick={onClose}>
-                Practice
+              🧠 Practice
               </Link>
             </li>
             <li>
               <Link to="/memes" className="link" onClick={onClose}>
-                Memes
+              🤪Memes
               </Link>
             </li>
             <li>
               <Link to="/quiz" className="link" onClick={onClose}>
-                Quiz
+              🧩Quiz
               </Link>
             </li>
             <li>
               <Link to="/logout" className="link" onClick={onClose}>
-                Logout
+              ↪ Logout
               </Link>
             </li>
           </>
@@ -58,12 +55,12 @@ const Navbar = ({ onClose }) => {
           <>
             <li>
               <Link to="/login" className="link" onClick={onClose}>
-                Login
+              ↩ Login
               </Link>
             </li>
             <li>
               <Link to="/signup" className="link" onClick={onClose}>
-                Sign Up
+              📝 Sign Up
               </Link>
             </li>
           </>

@@ -3,24 +3,26 @@ import { useNavigate } from "react-router-dom";
 import "./Logout.css"; // Import the CSS file for styles
 
 const Logout = ({ onLogout }) => {
+  
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      // Remove user token from localStorage to log them out
+      
       localStorage.removeItem("token");
-      localStorage.removeItem("user"); // Make sure to clear user data too
+      localStorage.removeItem("user"); 
       console.log("User logged out successfully.");
+      
 
-      // Call the onLogout prop to update the app state
+      
       onLogout();
 
-      // Redirect to the HomeGuest page after logout
-      navigate("/"); // Redirect to HomeGuest page
-    }, 7000); // 3-second delay before logout
+      
+      navigate("/"); 
+    }, 5000); 
 
-    // Inject spinner keyframes rule dynamically
+   
     const injectKeyframes = () => {
       try {
         const styleSheet = document.styleSheets[0];
@@ -39,13 +41,15 @@ const Logout = ({ onLogout }) => {
       }
     };
 
-    injectKeyframes(); // Call function to inject the keyframes rule
+    injectKeyframes(); 
   }, [navigate, onLogout]);
+  
 
   return (
-    <div className="container">
+    <div>
+      
       {loading ? (
-        <div className="">
+        <div>
           <h2 className="messageText">Logging out...</h2>
           <div className="spinner"></div>
         </div>

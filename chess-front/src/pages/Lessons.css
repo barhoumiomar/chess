@@ -1,4 +1,11 @@
+.verify{
+  font-size: 45px;
+  margin-top: 250px;
+  margin-left: 370px;
+}
+
 .container {
+  background-color: rgba(240, 171, 43, 0.959);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,14 +16,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
+  
+
 }
 
 .title {
   font-size: 48px;
   color: #180606;
-  margin-bottom: 20px;
-  font-family: 'Georgia', serif;
+  margin-bottom: 100px;
+  font-family: 'Georgia', serif; 
+  margin-top: 120px;
 }
 
 .subtitle {
@@ -48,7 +58,7 @@
 .lessonContent {
   margin-top: 20px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #b6b6b6ea;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 800px;
@@ -56,7 +66,7 @@
 }
 
 .lessonTitle {
-  
+  margin-top: 25px;
   font-size: 52px;
   text-align: center;
   color: #333;
@@ -88,5 +98,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  height: 400px; /* You can adjust the height as per your preference */
+  height: 400px; /* You can adjust the height as per your preference */ 
+  
 }

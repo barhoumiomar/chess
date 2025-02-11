@@ -3,7 +3,7 @@ import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import "./Quiz.css";
 
-const Quiz = () => {
+const Quiz = ({ user }) => {
   const [game, setGame] = useState(new Chess());
   const [puzzle, setPuzzle] = useState(null);
   const [feedback, setFeedback] = useState("");
@@ -13,52 +13,211 @@ const Quiz = () => {
 
   const puzzles = [
     {
-      fen: "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
-      solution: ["f3g5"],
+
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["h2h4"],
       hints: [
-        "Consider moving your knight.",
-        "Your knight can attack the pawn on e5.",
-        "Move your knight to g5 to attack the pawn on e5.",
+        "consider playing h2h4", 
       ],
-    },
-    {
-      fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-      solution: ["e4"],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["h2h3"],
       hints: [
-        "This is a classic opening move.",
-        "Consider controlling the center with a pawn.",
-        "Move the pawn from e2 to e4.",
+        "consider playing h2h3",
       ],
-    },
-    {
-      fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-      solution: ["d4"],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["g2g3"],
       hints: [
-        "This move also controls the center.",
-        "It's another common opening move in chess.",
-        "Move the pawn from d2 to d4.",
+        "consider playing g2g3",
       ],
-    },
-    {
-      fen: "r1bqkbnr/pppppppp/8/8/8/4P3/PPP1P1PP/RNBQKBNR w KQkq - 0 1",
-      solution: ["e5"],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["g2g4"],
       hints: [
-        "Consider advancing the pawn to e5.",
-        "This can lead to more open positions.",
-        "Move the pawn from e4 to e5.",
+        "consider playing g2g4",
       ],
-    },
-    {
-      fen: "r1bqkbnr/pppppppp/8/8/8/5P2/PPP1P1PP/RNBQKBNR w KQkq - 0 1",
-      solution: ["g4"],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["g1h3"],
       hints: [
-        "This is an aggressive move that can put pressure on the opponent.",
-        "Consider advancing the pawn to g4.",
+        "try to move your right knight  from g1 to h3",
       ],
-    },
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["f2f3"],
+      hints: [
+        "move the pawn from f2 to f3",
+      ],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["f2f4"],
+      hints: [
+        "move the pawn from f2 to f4",
+      ],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["e2e3"],
+      hints: [
+        "consider moving your pawn from e2 to e3",
+      ],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["e2e4"],
+      hints: [
+        "try to move pawn from e2 to e4",
+      ],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["d2d3"],
+      hints: [
+        "consider moving pawn from d2 to d3",
+      ],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["d2d4"],
+      hints: [
+        "try to move pawn from d2 to d4",
+      ],
+},
+{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["c2c3"],
+      hints: [
+        "consider playing pawn from c2 to c3",
+      ],
+},{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["c2c4"],
+      hints: [
+        "try to move pawn from c2 to c4",
+      ],
+},{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["b2b3"],
+      hints: [
+        "try to move pawn from b2 to b3",
+      ],
+},{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["b2b4"],
+      hints: [
+        "consider moving b2 to b4",
+      ],
+},{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["a2a3"],
+      hints: [
+        "move the pawn from a2 to a3",
+      ],
+},{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["a2a4"],
+      hints: [
+        "move the pawn from a2 to a4 ",
+      ],
+},{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["b1c3"],
+      hints: [
+        "move your left knight to c3",
+      ],
+},{
+      fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      solution: ["b1a3"],
+      hints: [
+        "move your left knight to a3",
+      ],
+},{
+      fen:"rnbqkbnr/ppp2ppp/8/3pp3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 1",
+      solution: ["d2d3"],
+      hints: [
+        "try to defend your pawn in the middle",
+      ],
+},{
+      fen:"r1bqkb1r/pppp1ppp/2n2n2/8/3pP3/2N2N2/PPP2PPP/R1BQKB1R w KQkq - 0 1",
+      solution: ["f3d4"],
+      hints: [
+        "take the pawn",
+      ],
+},{
+      fen:"rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq e6 0 1",
+      solution: ["g1f3"],
+      hints: [
+        "black played e5, try to attack his pawn with your knight",
+      ],
+},
+{
+      fen:"rnbqkbnr/ppp3pp/3p1p2/8/3pP3/5N2/PPP1BPPP/RNBQK2R w KQkq - 0 1",
+      solution: ["d1d4"],
+      hints: [
+        "take pawn with your queen",
+      ],
+},{
+      fen:"rnbqkb1r/p1p3pp/1p1p1p1n/8/3QP3/1PN2N2/P1P1BPPP/R1B1K2R w KQkq - 0 1",
+      solution: ["c1h6"],
+      hints: [
+        "take the opponent's knight with your bishop",
+      ],
+},{
+      fen:"r1bqk2r/p5bp/1pn2p1p/3N4/3Q4/1P1B1N2/P1P2PPP/R3K2R w KQkq - 0 1",
+      solution: ["d4e4"],
+      hints: [
+        "attack the opponent's king with your queen",
+      ],
+},{
+      fen:"r6r/pb2k1bp/5p1p/1B6/3N4/1P6/P1P2PPP/R3K2R w KQkq - 0 1",
+      solution: ["d4f5"],
+      hints: [
+        "fork the opponent's king",
+      ],
+},{
+      fen:"kr6/pp3pp1/N6b/8/7P/6P1/2PP4/K1B5 w - - 0 1",
+      solution: ["a6c7"],
+      hints: [
+        "move the knight to checkmate ! ",
+      ],
+},{
+      fen:"rnbqkbnr/ppppp2p/5p2/6p1/8/4P3/PPPP1PPP/RNBQKBNR w KQkq g6 0 1",
+      solution: ["d1h5"],
+      hints: [
+        "easiest checkmate ever ! you can do it",
+      ],
+},{
+      fen:"rnb1kbnr/ppppqppp/8/4p3/4P3/2N5/PPPP1PPP/R1BQKBNR w KQkq - 0 1",
+      solution: ["c3d5"],
+      hints: [
+        "attack the queen ",
+      ],
+},
+{
+  fen:"rnbqkbnr/ppppp1pp/8/5p2/4P3/8/PPPP1PPP/RNBQKBNR w KQkq f6 0 1",
+  solution: ["e4f5"],
+  hints: [
+    "take the pawn",
+  ],
+},
+{
+  fen:"r1b1kb1r/ppppqppp/5n2/4p3/2BnP3/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 1",
+  solution: ["f3g1"],
+  hints: [
+    "black wants to trade knights, then attacking your other knight with his pawn, don't take it and retreat !",
+  ],
+},
+
+   
   ];
   
-
   const generateRandomPuzzle = () => {
     const randomPuzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
     setPuzzle(randomPuzzle);
@@ -78,35 +237,34 @@ const Quiz = () => {
       return false;
     }
 
-    const move = game.move({
-      from: sourceSquare,
-      to: targetSquare,
-      promotion: piece.type === "p" && targetSquare[1] === "8" ? "q" : undefined,
-    });
+    const attemptedMove = `${sourceSquare}${targetSquare}`;
+    const expectedMove = puzzle.solution[moveIndex];
 
-    if (move === null) {
-      setFeedback("Invalid move. Try again!");
-      return false;
-    }
+    // Check if move is correct
+    if (attemptedMove === expectedMove) {
+      setGame((prevGame) => {
+        const newGame = new Chess(prevGame.fen());
+        newGame.move({ from: sourceSquare, to: targetSquare });
+        return newGame;
+      });
 
-    if (puzzle.solution[moveIndex] === `${sourceSquare}${targetSquare}`) {
-      setMoveIndex(moveIndex + 1);
-      if (moveIndex === puzzle.solution.length + 1) {
+      const newMoveIndex = moveIndex + 1;
+      setMoveIndex(newMoveIndex);
+
+      if (newMoveIndex === puzzle.solution.length) {
         setFeedback("Correct move! Well done! ✅");
         setQuizCompleted(true);
         setTimeout(() => {
           generateRandomPuzzle();
-        }, 3000);
+        }, 2000);
       } else {
         setFeedback("Good move! Keep going.");
       }
     } else {
-      setFeedback("Incorrect move. Keep trying!");
-      setMoveIndex(0);
+      setFeedback("Incorrect move. Try again!");
     }
 
-    setGame(new Chess(game.fen()));
-    return true;
+    return false;
   };
 
   const repeatPuzzle = () => {
@@ -119,35 +277,33 @@ const Quiz = () => {
 
   const handleShowHint = () => {
     if (hintIndex < puzzle.hints.length) {
-      // Show the hint
       setHintIndex(hintIndex + 1);
-      
-      // Get the next move from the solution
+
       const nextMove = puzzle.solution[moveIndex];
       if (nextMove) {
-        const move = game.move(nextMove); // Directly pass the move string, e.g., "d2d4"
-        if (move) {
-          setGame(new Chess(game.fen())); // Update the game state with the new position
-          setFeedback(`Computer played: ${nextMove}`);
-          setMoveIndex(moveIndex + 1);
-        } else {
-          setFeedback("Invalid move by computer.");
+        setGame((prevGame) => {
+          const newGame = new Chess(prevGame.fen());
+          newGame.move(nextMove);
+          return newGame;
+        });
+
+        setFeedback(`Computer played: ${nextMove}`);
+        setMoveIndex(moveIndex + 1);
+
+        if (moveIndex + 1 === puzzle.solution.length) {
+          setQuizCompleted(true);
+          setFeedback("Congratulations! You've completed the puzzle.");
+          setTimeout(() => {
+            generateRandomPuzzle();
+          }, 3000);
         }
-      }
-      
-      // Check if the puzzle is completed
-      if (moveIndex === puzzle.solution.length) {
-        setQuizCompleted(true);
-        setFeedback("Congratulations! You've completed the puzzle.");
-        setTimeout(() => {
-          generateRandomPuzzle();
-        }, 3000);
       }
     }
   };
-  
-    
 
+  if (!user) {
+    return <div className="verify">Please log in to access this page.</div>;
+  }
 
   return (
     <div className="quiz-container">
@@ -175,7 +331,7 @@ const Quiz = () => {
                 borderRadius: "10px",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
               }}
-              isDraggable={quizCompleted === false}
+              isDraggable={!quizCompleted}
             />
           </div>
         </>
@@ -190,12 +346,11 @@ const Quiz = () => {
             Repeat
           </button>
         )}
-       {puzzle && !quizCompleted && (
-  <button className="button" onClick={handleShowHint}>
-    Show Hint
-  </button>
-)}
-
+        {puzzle && !quizCompleted && (
+          <button className="button" onClick={handleShowHint}>
+            Show Hint
+          </button>
+        )}
       </div>
     </div>
   );

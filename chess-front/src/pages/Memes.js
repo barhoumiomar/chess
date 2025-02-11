@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Memes.css"; // Import the CSS file for styles
 
-const Memes = () => {
+const Memes = ({user}) => {
+  
   const memes = [
     "https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/AdityaFoundChess/phpCavQrH.png",
     "https://i.pinimg.com/736x/d7/fd/04/d7fd04e6e49946f2fdcab5b219e7cefa.jpg",
@@ -45,7 +46,9 @@ const Memes = () => {
       return newReactions;
     });
   };
-
+  if (!user) {
+    return <div className="verify">Please log in to access this page.</div>;
+  }
   return (
     <div className="memes-container">
       <h1 className="memes-title">Chess Memes 😂</h1>

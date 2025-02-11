@@ -2,7 +2,9 @@
     background-color: #0a0331;
     color: white;
     padding: 20px 0;
-    text-align: center;
+    text-align: center; 
+    margin-top: 100px;
+    
   }
   
   .footer-container {
@@ -13,6 +15,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
+    
   }
   
   .footer-logo {

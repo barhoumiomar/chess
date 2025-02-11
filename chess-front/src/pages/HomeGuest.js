@@ -8,19 +8,11 @@ const HomeGuest = ({ onLogin }) => {
 
   return (
     <div className="mainContent">
-      {/* Left Section: Welcome Message */}
-      <div className="welcome-section">
-        <h1 className="title">ChessClub</h1>
-        <h2 className="subtitle">
-          Ready to make your next move? Log in to track your progress, save your
-          games, and access exclusive chess puzzles!
-        </h2>
-      </div>
-
-      
       <div className="auth-container">
+       
         {showLogin ? (
-          <Login onLogin={onLogin} />
+          
+          <Login  onLogin={onLogin} />
         ) : (
           <SignUp onLogin={onLogin} />
         )}
@@ -47,6 +39,7 @@ const HomeGuest = ({ onLogin }) => {
             </>
           )}
         </p>
+        
       </div>
     </div>
   );

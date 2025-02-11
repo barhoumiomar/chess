@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
-import "./Lessons.css"; // Import external CSS
-const Lessons = () => {
-  const [currentLesson, setCurrentLesson] = useState(null);
+import "./Lessons.css"; 
 
+const Lessons = ({user}) => {
+  const [currentLesson, setCurrentLesson] = useState(null);
+  if (!user) {
+    return <div className="verify">Please log in to access this page.</div>;
+  }
   // Lessons data
   const lessons = [
     {
@@ -25,7 +28,7 @@ const Lessons = () => {
         It can move any number of squares in a straight line, making it especially strong in open positions. 
         The rook is also involved in castling, a special move that helps protect the king.
       `,
-      fen: "8/8/8/8/8/8/8/R7 w - - 0 1", // Only a rook
+      fen: "8/8/8/8/8/8/8/R7 w - - 0 1", 
     },
     {
       id: 3,
@@ -105,6 +108,7 @@ const Lessons = () => {
       </div>
     </div>
   </div>
+  
 )}
 
     </div>
