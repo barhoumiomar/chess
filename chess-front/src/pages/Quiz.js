@@ -214,6 +214,21 @@ const Quiz = ({ user }) => {
     "black wants to trade knights, then attacking your other knight with his pawn, don't take it and retreat !",
   ],
 },
+{
+  fen:"rnbqkbnr/pp1p1ppp/2p5/4p3/2B1P3/5Q2/PPPP1PPP/RNB1K1NR w KQkq - 0 1",
+  solution: ["f3f7"],
+  hints: [
+    "checkmate in 1 move",
+  ],
+},
+, {
+  fen:"1R5K/8/8/8/8/8/R7/6k1 w - - 0 1",
+  solution: ["b8b1"],
+  hints: [
+    "checkmate in 1 move ! ",
+  ],
+},
+
 
    
   ];
@@ -302,7 +317,7 @@ const Quiz = ({ user }) => {
   };
 
   if (!user) {
-    return <div className="verify">Please log in to access this page.</div>;
+    return <div className="verify">Please log in to access this page.  <a href="/">login here</a> </div>;
   }
 
   return (

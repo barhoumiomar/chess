@@ -27,19 +27,25 @@ const Navbar = ({ onClose }) => {
           <>
             <li>
               <Link to="/lessons" className="link" onClick={onClose}>
-              📚Lessons
+              📚Learn
               </Link>
             </li>
-            <li>
-              <Link to="/practice" className="link" onClick={onClose}>
-              🧠 Practice
-              </Link>
-            </li>
+              <li>
+                <Link to="/practice" className="link" onClick={onClose}>
+                🧠 Practice
+                </Link>
+              </li>
+              <li>
+                <Link to="/watch" className="link" onClick={onClose}>
+                📺 watch
+                </Link>
+              </li>
             <li>
               <Link to="/memes" className="link" onClick={onClose}>
               🤪Memes
               </Link>
             </li>
+            
             <li>
               <Link to="/quiz" className="link" onClick={onClose}>
               🧩Quiz

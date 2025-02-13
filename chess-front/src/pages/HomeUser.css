@@ -1,7 +1,7 @@
 /* General Styling */
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #0a0a0a;
+  background-color: #0a0a0aec;
   color: white;
 }
 
@@ -16,48 +16,41 @@ body {
 /* Left Sidebar */
 .left-sidebar {
   flex: 0.75;
-  background: #1a1a2e;
+  background: #1a1a2ebb;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0);
 }
 
 /* Main Content */
 .main-content {
   flex: 3.5;
-  background: #1a1a2e;
+  background: #1a1a2ea4;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0);
   width: 100%;
   
 }
 
-/* Right Sidebar */
-.right-sidebar {
-  flex: 1;
-  background: #1a1a2e;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
-}
 
 /* Greeting Section */
 .greeting {
-  font-size: 28px;
+  font-size: 51px;
   text-align: center;
   color: #ffcc00; /* Gold color */
   margin-bottom: 20px;
 }
 
 .username {
+  font-size: 50px;
   font-weight: bold;
-  color: #ff5733; /* Orange accent */
+  color: #ff2f00; /* Orange accent */
 }
 
 /* Section Styling */
 .section {
-  background: #16213e;
+  background: #16213ebb;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -67,7 +60,7 @@ body {
 
 .section:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgb(255, 255, 255);
 }
 
 .section-title {
@@ -92,10 +85,10 @@ body {
 }
 
 .button {
-  padding: 12px 18px;
+  padding: 20px 30px;
   background: #ff5733;
   color: white;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: bold;
   text-decoration: none;
   border-radius: 8px;
@@ -194,7 +187,7 @@ body {
 /* Right Sidebar */
 .right-sidebar {
   flex: 1;
-  background: #1a1a2e;
+  background: #1a1a2eb2;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
@@ -219,7 +212,7 @@ body {
 
 .player-item,
 .event-item {
-  font-size: 14px;
+  font-size: 16px;
   color: #ccc;
   margin-bottom: 8px;
 }
@@ -286,7 +279,7 @@ body {
 }
 /* General Styling */
 .chess-tutorials {
-  background: #16213e;
+  background: #16213e57;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -296,7 +289,7 @@ body {
 
 .chess-tutorials:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.897);
 }
 
 /* Section Title */
@@ -314,7 +307,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
-  background: #16213e;
+  background: #16213e04;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
@@ -324,10 +317,10 @@ body {
 /* Tutorial Guide */
 .tutorial-guide {
   flex: 1 1 calc(50% - 20px); /* Takes up 50% of the container with some gap */
-  background: #1a1a2e;
+  background: #1a1a2ece;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.493);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -372,7 +365,7 @@ body {
   border-radius: 2%;
   position: relative;
   padding: 20px 0;
-  background-color: #071941;
+  background-color: #0719418a;
 }
 
 .chess-images-container {

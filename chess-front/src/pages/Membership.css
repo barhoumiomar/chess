@@ -1,63 +1,80 @@
-/* Membership.css */
-
 .membership-container {
-    background-color: #fff; /* White background for clean look */
-    padding: 40px;
-    margin: 20px auto;
-    margin-top: 100px;
-    max-width: 800px; /* Limits the width of the content */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    font-family: Arial, sans-serif;
-  }
+  margin-top: 100px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background-image: url('https://files.oaiusercontent.com/file-Dq7wHVjcQpWqfwHLHc13xU?se=2025-02-13T21%3A40%3A20Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D55ad8055-d6aa-4ad1-bb76-1e5b5169cb41.webp&sig=uervjCUxekQcjHkACuN8DFum%2B3l4jCzPtJJtVKUWvaE%3D');
   
-  .membership-container h1 {
-    font-size: 36px;
-    color: #2d3b44; /* Dark blue for the title */
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .membership-container p {
-    font-size: 18px;
-    color: #555; /* Dark gray text color */
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .membership-container h2 {
-    font-size: 28px;
-    color: #333; /* Slightly darker color for subheadings */
-    margin-bottom: 15px;
-  }
-  
-  .membership-container ul {
-    list-style-type: none; /* Removes default bullet points */
-    padding: 0;
-  }
-  
-  .membership-container ul li {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 12px; /* Adds space between list items */
-  }
-  
-  .membership-container ul li strong {
-    color: #0066cc; /* Blue for plan names */
-  }
-  
-  .membership-container ul li:last-child {
-    margin-bottom: 0;
-  }
-  
-  .membership-container a {
-    color: #0066cc; /* Blue links */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .membership-container a:hover {
-    text-decoration: underline;
-  }
-  
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #f8f1f1;
+}
+
+.membership-list {
+  text-align: left;
+  padding: 10px;
+  list-style-type: none;
+}
+
+.membership-list li {
+  background: #ffffff;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+.p{
+  color: white;
+}
+.membership-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: left;
+}
+
+input, select {
+  padding: 10px;
+  border: 1px solid #fffcfc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row div {
+  width: 48%;
+}
+
+button {
+  background: #4c88ff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3b6dd8;
+}

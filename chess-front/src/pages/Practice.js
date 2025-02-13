@@ -78,7 +78,7 @@ const Practice = ({user}) => {
   };
 
   if (!user) {
-    return <div className="verify">Please log in to access this page.</div>;
+    return <div className="verify">Please log in to access this page. <a href="/">login here</a></div>;
   }
   return (
     <div className="practice-container">

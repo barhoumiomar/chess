@@ -6,7 +6,7 @@ import "./Lessons.css";
 const Lessons = ({user}) => {
   const [currentLesson, setCurrentLesson] = useState(null);
   if (!user) {
-    return <div className="verify">Please log in to access this page.</div>;
+    return <div className="verify">Please log in to access this page. <a href="/">login here</a></div>;
   }
   // Lessons data
   const lessons = [
@@ -18,7 +18,7 @@ const Lessons = ({user}) => {
         On its first move, a pawn can move two squares forward. Pawns are unique because they can be promoted 
         to any other piece (except a king) if they reach the opposite side of the board.
       `,
-      fen: "8/8/8/8/8/8/PPPPPPPP/8 w - - 0 1", // Only pawns
+      fen: "8/pppppppp/8/8/8/8/PPPPPPPP/8 w KQkq - 0 1", // Only pawns
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const Lessons = ({user}) => {
         It can move any number of squares in a straight line, making it especially strong in open positions. 
         The rook is also involved in castling, a special move that helps protect the king.
       `,
-      fen: "8/8/8/8/8/8/8/R7 w - - 0 1", 
+      fen: "r6r/8/8/8/8/8/8/R6R w KQkq - 0 1", 
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ const Lessons = ({user}) => {
         Knights can jump over other pieces, making them valuable in closed positions. 
         They are the only pieces that can move to a square of the opposite color in one move.
       `,
-      fen: "8/8/8/8/8/8/8/N7 w - - 0 1", // Only a knight
+      fen: "1n4n1/8/8/8/8/8/8/1N4N1 w - - 0 1", // Only a knight
     },
     {
       id: 4,
@@ -47,7 +47,7 @@ const Lessons = ({user}) => {
         The bishop moves diagonally in any direction. Each player starts with two bishops, one on a light square 
         and one on a dark square. Bishops are most effective in open positions where they can control long diagonals.
       `,
-      fen: "8/8/8/8/8/8/8/B7 w - - 0 1", // Only a bishop
+      fen: "b6b/8/8/8/8/8/8/B6B b - - 0 1", // Only a bishop
     },
     {
       id: 5,
@@ -57,7 +57,7 @@ const Lessons = ({user}) => {
         allowing it to move in any direction: horizontally, vertically, or diagonally. 
         The queen is a key piece in both attack and defense.
       `,
-      fen: "8/8/8/8/8/8/8/Q7 w - - 0 1", // Only a queen
+      fen: "7q/8/8/8/8/8/8/Q7 w - - 0 1",
     },
     {
       id: 6,
@@ -65,9 +65,9 @@ const Lessons = ({user}) => {
       description: `
         The king is the most important piece in chess. It moves one square in any direction. 
         The objective of the game is to checkmate the opponent's king. The king is also involved in castling, 
-        a special move that helps improve its safety.
+        a special move that helps improve its safety. 
       `,
-      fen: "8/8/8/8/8/8/8/K7 w - - 0 1", // Only a king
+      fen: "8/8/8/8/8/3K1k2/8/8 b - - 0 1", // Only a king
     },
   ];
 

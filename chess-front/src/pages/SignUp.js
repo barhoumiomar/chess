@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./SignUp.css";
+
 
 const SignUp = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -42,8 +42,8 @@ const SignUp = ({ onLogin }) => {
   };
 
   return (
-    <div className="page">
-      <div className="container">
+    <div className="">
+      <div className="auth-container">
         <h1>Sign Up</h1>
 
         {successMessage && <p className="success">{successMessage}</p>}

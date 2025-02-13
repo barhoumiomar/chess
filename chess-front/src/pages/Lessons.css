@@ -1,4 +1,5 @@
 .verify{
+  color: red;
   font-size: 45px;
   margin-top: 250px;
   margin-left: 370px;
@@ -23,15 +24,16 @@
 
 .title {
   font-size: 48px;
-  color: #180606;
+  color: #ffffff;
   margin-bottom: 100px;
   font-family: 'Georgia', serif; 
   margin-top: 120px;
 }
 
 .subtitle {
+  text-align: center;
   font-size: 21px;
-  color: #240b0b;
+  color: #ffffff;
   margin-bottom: 40px;
   font-family: 'Arial', sans-serif;
 }
@@ -58,7 +60,7 @@
 .lessonContent {
   margin-top: 20px;
   padding: 20px;
-  background-color: #b6b6b6ea;
+  background-color: #ffffffea;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 800px;

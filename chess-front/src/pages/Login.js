@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import './Login.css';
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -58,9 +58,10 @@ const handleLogin = async (e) => {
 };
 
   return (
-    <div className="page">
-      <div className="container">
+    <div className="">
+      <div className="auth-container">
         <h1>Login</h1>
+        
         {error && <p className="error">{error}</p>}
         {loading && !authenticating && <p className="loading">Logging in...</p>}
         {authenticating && <p className="loading">Authentification...</p>}
@@ -75,7 +76,7 @@ const handleLogin = async (e) => {
               required
               placeholder=" "
             />
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">💻Username:</label>
           </div>
           <div className="formGroup">
             <input
@@ -87,7 +88,7 @@ const handleLogin = async (e) => {
               required
               placeholder=" "
             />
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">🔐Password:</label>
           </div>
           <div className="formGroup">
             <p className="captcha-text">{generatedCaptcha}</p>
@@ -98,7 +99,7 @@ const handleLogin = async (e) => {
               onChange={(e) => setCaptcha(e.target.value)}
               className="input"
               required
-              placeholder="Enter CAPTCHA"
+              placeholder="♻️Enter CAPTCHA"
             />
           </div>
           <button type="submit" className="button" disabled={loading}>

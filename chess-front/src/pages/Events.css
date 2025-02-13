@@ -1,59 +1,53 @@
-/* Events.css */
-
 .events-container {
-    
-    background-color: #fff; /* White background for clean look */
-    padding: 40px;
-    margin: 20px auto; 
-    margin-top: 100px;
-    max-width: 800px; /* Limits the width of the content */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffcc00, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  font-size: 1.2rem;
+  padding: 3px;
+  margin: 10px 0;
+  background: transparent;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+strong {
+  color: #ffcc00;
+  font-size: 1.3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .events-container {
+    padding: 20px;
   }
-  
-  .events-container h1 {
-    font-size: 36px;
-    color: #2d3b44; /* Dark blue color for the title */
-    text-align: center;
-    margin-bottom: 20px;
+  h1 {
+    font-size: 2rem;
   }
-  
-  .events-container p {
-    font-size: 18px;
-    color: #555; /* Dark gray text */
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 30px;
+  li {
+    font-size: 1rem;
   }
-  
-  .events-container ul {
-    list-style-type: none; /* Removes default bullet points */
-    padding: 0;
-    text-align: center; /* Centers the list items */
-  }
-  
-  .events-container ul li {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 15px; /* Adds space between list items */
-  }
-  
-  .events-container ul li strong {
-    color: #0066cc; /* Blue for event names */
-  }
-  
-  .events-container ul li:last-child {
-    margin-bottom: 0;
-  }
-  
-  .events-container a {
-    color: #0066cc; /* Blue links */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .events-container a:hover {
-    text-decoration: underline;
-  }
-  
+}

@@ -1,145 +1,262 @@
-/* Login.css */
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: 'Arial', sans-serif;
+
+.mainContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    object-fit:fill;
+    background-repeat: no-repeat; 
+  }
   
-}
-
-.container {
-  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
-  padding: 10px; /* Reduced padding */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 350px; /* Slightly smaller width */
-  display: flex;
-  flex-direction: column;
-  backdrop-filter: blur(10px); /* Adds a blur effect to the background */
   
-}
+  /* Right Section (Login/Signup Form) */
+  .auth-container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color:transparent;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Typing animation effect */
+  .typing-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #333;
+    width: 0;
+    animation: typing 3s steps(20) 1s forwards, blink-caret 0.75s step-end infinite;
+  }
+  
+  
+  /* Animation for typing effect */
+  @keyframes typing {
+    from {
+      width: 1px;
+    }
+    to {
+      width: 22rem; /* Adjust based on text length */
+    }
+  }
+  
+  /* Blinking caret effect */
+  @keyframes blink-caret {
+    40% {
+      border-color: transparent;
+    }
+  }
+  
+  /* Style for the toggle buttons */
+  .toggle-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .toggle-button:hover {
+    color: #0056b3;
+  }
+  
+  .auth-container h1 {
+    font-size: 2.25rem; /* Reduced font size */
+    color: #125bc7;
+    margin-top: 10%; /* Reduced margin */
+  }
+  
+  .formGroup {
+    margin-bottom: 1px; /* Reduced margin */
+    text-align: left;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 0.9rem; /* Reduced font size */
+    box-sizing: border-box;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+  }
+  
+  .button {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    background-color: #1877f2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem; /* Reduced font size */
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px; /* Reduced margin */
+  }
+  
+  .button:hover {
+    background-color: #166fe5;
+  }
+  
+  
+  .error {
+    color: #ff0000;
+    font-size: 0.8rem; /* Reduced font size */
+    margin-bottom: 8px; /* Reduced margin */
+  }
+  
+  .success {
+    color: #28a745;
+    font-size: 0.8rem; /* Reduced font size */
+    margin-bottom: 8px; /* Reduced margin */
+  }
+  
 
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 15px; /* Reduced margin */
-  font-size: 22px; /* Slightly smaller font size */
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.formGroup {
-  position: relative;
-  margin-bottom: 15px; /* Reduced margin */
-}
-
-label {
-  position: absolute;
-  top: 10px; /* Adjusted position */
-  left: 12px;
-  font-size: 13px; /* Smaller font size */
-  color: #042212;
-  transition: all 0.3s;
-}
-
-.captcha-text {
-  font-size: 16px; /* Smaller font size */
-  font-style: italic;
-  text-align: center;
-  margin-bottom: 8px; /* Reduced margin */
-  color: #333;
-}
-
-.input {
-  width: 100%;
-  padding: 10px; /* Reduced padding */
-  padding-left: 40px;
-  margin: 8px 0; /* Reduced margin */
-  border-radius: 24px; /* Slightly smaller border radius */
-  border: 1px solid #ccc;
-  font-size: 14px; /* Smaller font size */
-  transition: all 0.3s;
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent input background */
-}
-
-.input:focus {
-  border-radius: 24px; /* Consistent border radius */
-  border-color: #4c88ff;
-  box-shadow: 0 0 5px rgba(76, 136, 255, 0.4);
-}
-
-.input:focus + label,
-.input:not(:placeholder-shown) + label {
-  top: -8px; /* Adjusted position */
-  left: 12px;
-  font-size: 11px; /* Smaller font size */
-  color: #4c88ff;
-}
-
-button.button {
-  width: 100%;
-  padding: 10px; /* Reduced padding */
-  background-color: #4c88ff;
-  color: white;
-  border: none;
-  border-radius: 24px; /* Slightly smaller border radius */
-  font-size: 14px; /* Smaller font size */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button.button:disabled {
-  background-color: #a1c6ff;
-}
-
-button.button:hover {
-  background-color: #3a6db5;
-}
-
-.loading {
-  text-align: center;
-  color: #4c88ff;
-  font-size: 13px; /* Smaller font size */
-  margin-bottom: 15px; /* Reduced margin */
-}
-
-.loading::after {
-  content: '';
-  display: inline-block;
-  border: 2px solid #f3f3f3; /* Smaller border */
-  border-top: 2px solid #4c88ff; /* Smaller border */
-  border-radius: 50%;
-  width: 16px; /* Smaller size */
-  height: 16px; /* Smaller size */
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.error {
-  text-align: center;
-  padding: 8px; /* Reduced padding */
-  border-radius: 4px;
-  margin-bottom: 15px; /* Reduced margin */
-  font-size: 13px; /* Smaller font size */
-  background-color: #ffe6e6;
-  color: #f44336;
-}
-
-a {
-  color: #4c88ff;
-  text-decoration: none;
-  font-size: 13px; /* Smaller font size */
-}
-
-a:hover {
-  text-decoration: underline;
-}
+  
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    font-size: 22px; /* Slightly smaller font size */
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup {
+    position: relative;
+    margin-bottom: 15px; /* Reduced margin */
+  }
+  
+  label {
+    position: absolute;
+    top: 10px; /* Adjusted position */
+    left: 12px;
+    font-size: 13px; /* Smaller font size */
+    color: #042212;
+    transition: all 0.3s;
+  }
+  
+  .captcha-text {
+    font-size: 16px; /* Smaller font size */
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 8px; /* Reduced margin */
+    color: #333;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    padding-left: 40px;
+    margin: 8px 0; /* Reduced margin */
+    border-radius: 24px; /* Slightly smaller border radius */
+    border: 1px solid #ccc;
+    font-size: 14px; /* Smaller font size */
+    transition: all 0.3s;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent input background */
+  }
+  
+  .input:focus {
+    border-radius: 24px; /* Consistent border radius */
+    border-color: #4c88ff;
+    box-shadow: 0 0 5px rgba(76, 136, 255, 0.4);
+  }
+  
+  .input:focus + label,
+  .input:not(:placeholder-shown) + label {
+    top: -8px; /* Adjusted position */
+    left: 12px;
+    font-size: 11px; /* Smaller font size */
+    color: #4c88ff;
+  }
+  
+  button.button {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    background-color: #4c88ff;
+    color: white;
+    border: none;
+    border-radius: 24px; /* Slightly smaller border radius */
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.button:disabled {
+    background-color: #a1c6ff;
+  }
+  
+  button.button:hover {
+    background-color: #3a6db5;
+  }
+  
+  .loading {
+    text-align: center;
+    color: #4c88ff;
+    font-size: 13px; /* Smaller font size */
+    margin-bottom: 15px; /* Reduced margin */
+  }
+  
+  .loading::after {
+    content: '';
+    display: inline-block;
+    border: 2px solid #f3f3f3; /* Smaller border */
+    border-top: 2px solid #4c88ff; /* Smaller border */
+    border-radius: 50%;
+    width: 16px; /* Smaller size */
+    height: 16px; /* Smaller size */
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .error {
+    text-align: center;
+    padding: 8px; /* Reduced padding */
+    border-radius: 4px;
+    margin-bottom: 15px; /* Reduced margin */
+    font-size: 13px; /* Smaller font size */
+    background-color: #ffe6e6;
+    color: #f44336;
+  }
+  
+  a {
+    color: #4c88ff;
+    text-decoration: none;
+    font-size: 13px; /* Smaller font size */
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .success {
+    background-color: #e6ffe6;
+    color: #4caf50;
+  }
+  
+  .error {
+    background-color: #ffe6e6;
+    color: #f44336;
+  }
+  
+  .form-footer {
+    margin-top: 20px;
+  }
+  

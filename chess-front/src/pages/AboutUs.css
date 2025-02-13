@@ -1,41 +1,49 @@
 /* AboutUs.css */
 
 .about-us-container {
-    background-color: #f4f4f4; /* Light gray background */
-    padding: 40px;
-    margin: 20px auto;
-    margin-top: 100px;
-    max-width: 800px; /* Limits the width of the content */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #1a1a1a, #252525);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffcc00, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  opacity: 0.85;
+  text-align: justify;
+}
+
+p:last-child {
+  font-style: italic;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-us-container {
+    padding: 20px;
   }
-  
-  .about-us-container h1 {
-    font-size: 36px;
-    color: #2d3b44; /* Darker blue color for the heading */
-    text-align: center;
-    margin-bottom: 20px;
+  h1 {
+    font-size: 2.5rem;
   }
-  
-  .about-us-container p {
-    font-size: 18px;
-    color: #555; /* Dark gray for the paragraph text */
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 20px;
+  p {
+    font-size: 1.1rem;
   }
-  
-  .about-us-container p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .about-us-container a {
-    color: #0066cc; /* Blue links */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .about-us-container a:hover {
-    text-decoration: underline;
-  }
-  
+}

@@ -9,17 +9,18 @@ const HomeGuest = ({ onLogin }) => {
   return (
     <div className="mainContent">
       <div className="auth-container">
-       
+        <div className="typing-text">Welcome to the ChessClub ! </div>
+
         {showLogin ? (
-          
-          <Login  onLogin={onLogin} />
+          <Login onLogin={onLogin} />
         ) : (
           <SignUp onLogin={onLogin} />
         )}
+
         <p>
           {showLogin ? (
             <>
-              Don't have an account?{" "}
+           <div className="text">Don't have an account?{" "}</div>
               <button
                 className="toggle-button"
                 onClick={() => setShowLogin(false)}
@@ -29,7 +30,7 @@ const HomeGuest = ({ onLogin }) => {
             </>
           ) : (
             <>
-              Already have an account?{" "}
+             <div className="text"> Already have an account?{" "}</div>
               <button
                 className="toggle-button"
                 onClick={() => setShowLogin(true)}
@@ -39,7 +40,6 @@ const HomeGuest = ({ onLogin }) => {
             </>
           )}
         </p>
-        
       </div>
     </div>
   );

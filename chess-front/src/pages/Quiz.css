@@ -1,25 +1,24 @@
 .quiz-container {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  margin-top: 70px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .quiz-title {
   margin-top: 70px;
   text-align: center;
   font-size: 32px;
-  color: #c20606;
+  color: #ffffff;
 }
 
 .quiz-subtitle {
   text-align: center;
   font-size: 25px;
-  color: #300b0b;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -39,7 +38,7 @@
 }
 
 .chessboard-container {
-  margin-left: 180px;
+  margin-left: 20px;
   display: flex;
   justify-content: center; /* Horizontally center */
   align-items: center;     /* Vertically center */
@@ -89,4 +88,17 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+}
+.feedback.success {
+  color: green;
+}
+
+.feedback.error {
+  color: red;
+}
+
+.timer-container {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
 }

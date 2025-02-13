@@ -57,7 +57,7 @@ const HomeUser = ({ user }) => {
       {/* Main Content (Center) */}
       <div className="main-content">
         <h2 className="greeting">
-          Hey! Welcome back <span className="username">{user.username}</span>! How are you today?
+          Hey! Welcome back <span className="username">{user.username}</span>! 
         </h2>
 
         {/* Get Started Section */}
@@ -67,9 +67,11 @@ const HomeUser = ({ user }) => {
             Ready to dive into the world of chess? Explore our lessons, practice on the chessboard, and test your skills with quizzes.
           </p>
           <div className="button-container">
-            <a href="/lessons" className="button">Start with Lessons</a>
-            <a href="/practice" className="button">Practice on the Chessboard</a>
-            <a href="/quiz" className="button">Take a Quiz</a>
+            <a href="/membership" className="button">Become Membership</a>
+            <a href="/events" className="button">Events</a>
+            <a href="/about" className="button">About Us</a> 
+            <a href="/contact" className="button">Contact</a> 
+
           </div>
         </div>
 

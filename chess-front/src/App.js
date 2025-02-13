@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -11,16 +10,17 @@ import Navbar from "./components/Navbar";
 import Memes from "./pages/Memes";
 import Logout from "./pages/LogOut";
 import HomeGuest from "./pages/HomeGuest";
-import ChessClubFooter from "./pages/ChessClubFooter";
 import Contact from "./pages/Contact";
 import Membership from "./pages/Membership"; 
 import AboutUs from "./pages/AboutUs";
 import Events from "./pages/Events";
+import Watch from "./pages/Watch";
 import "./App.css";
 
 function App() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);  // Track the token
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -28,17 +28,22 @@ function App() {
 
     if (token && userData) {
       setUser(JSON.parse(userData));
+      setToken(token);  // Store the token
     }
   }, []);
 
-  const handleLogin = (userData) => {
+  const handleLogin = (userData, token) => {
     setUser(userData);
+    setToken(token);  // Set token when logging in
+    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("token", token);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
+    setToken(null);  // Clear the token on logout
   };
 
   return (
@@ -58,17 +63,18 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={
-                user ? <Home user={user} /> : <HomeGuest onLogin={handleLogin} />
-              }
+              element={user ? <Home user={user} /> : <HomeGuest onLogin={handleLogin} />}
             />
             <Route path="/lessons" element={<Lessons user={user} />} />
+            <Route path="/Watch" element={<Watch user={user}/>}/>
             <Route path="/practice" element={<Practice user={user} />} />
             <Route path="/quiz" element={<Quiz user={user} />} />
             <Route path="/memes" element={<Memes user={user} />} />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/logout" element={<Logout onLogout={handleLogout} />} /> 
+            <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
+            
+           
             {/* footer links */}
             <Route path="/about" element={<AboutUs />} />
             <Route path="/events" element={<Events />} />
@@ -77,7 +83,7 @@ function App() {
           </Routes>
         </div>
 
-       {user &&  <ChessClubFooter />}
+       
       </div>
     </Router>
   );
