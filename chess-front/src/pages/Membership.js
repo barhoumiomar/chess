@@ -73,7 +73,7 @@ const Membership = () => {
           <option value="pro">Pro - $20/month</option>
         </select>
 
-        <h4>Payment Details</h4>
+        <h4 className="paymenttext">Payment Details</h4>
         <label>Card Number</label>
         <input 
           type="text" 

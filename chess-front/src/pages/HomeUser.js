@@ -28,6 +28,21 @@ const HomeUser = ({ user }) => {
     { name: "Grand Slam Chess Championship", date: "April 10, 2025" },
     { name: "FIDE World Cup", date: "May 15, 2025" },
   ];
+  const getGreeting = () => {
+    const currentTime = new Date();
+    const hour = currentTime.getHours();
+
+    if (hour < 12) {
+      return 'Good Morning';
+    } else if (hour < 18) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
+    }
+  };
+
+ 
+  const greeting = getGreeting();
 
   return (
     <div className="home-user-container">
@@ -56,9 +71,10 @@ const HomeUser = ({ user }) => {
 
       {/* Main Content (Center) */}
       <div className="main-content">
-        <h2 className="greeting">
-          Hey! Welcome back <span className="username">{user.username}</span>! 
-        </h2>
+      <h2 className="greeting">
+  {greeting} <span className="username">{user.username}</span>!
+</h2>
+
 
         {/* Get Started Section */}
         <div className="section get-started">
@@ -106,7 +122,7 @@ const HomeUser = ({ user }) => {
       {/* Right Sidebar */}
       <div className="right-sidebar">
         <div className="sidebar-section">
-          <h2 className="sidebar-title">Top 10 Famous Chess Players</h2>
+          <h2 className="sidebar-title">Discover Famous Chess Players</h2>
           <ul className="player-list">
             {topPlayers.map((player, index) => (
               <li key={index} className="player-item">

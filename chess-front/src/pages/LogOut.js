@@ -20,7 +20,7 @@ const Logout = ({ onLogout }) => {
 
       
       navigate("/"); 
-    }, 5000); 
+    }, 4000); 
 
    
     const injectKeyframes = () => {

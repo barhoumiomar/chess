@@ -5,9 +5,10 @@
   padding: 20px;
   text-align: center;
   background-image: url('https://files.oaiusercontent.com/file-Dq7wHVjcQpWqfwHLHc13xU?se=2025-02-13T21%3A40%3A20Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D55ad8055-d6aa-4ad1-bb76-1e5b5169cb41.webp&sig=uervjCUxekQcjHkACuN8DFum%2B3l4jCzPtJJtVKUWvaE%3D');
-  
+  background-size: cover; /* Ensure the image covers the container */
+  background-position: center; /* Center the image */
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgb(255, 255, 255);
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -15,8 +16,27 @@
   justify-content: center;
   min-height: 100vh;
   text-align: center;
+  position: relative; /* Required for the overlay */
 }
 
+/* Darken the background image */
+.membership-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Adjust the opacity (0.4 = 40% darker) */
+  border-radius: 10px; /* Match the container's border radius */
+  z-index: 1; /* Ensure the overlay is above the background image */
+}
+
+/* Ensure content is above the overlay */
+.membership-container > * {
+  
+  z-index: 1; /* Place content above the overlay */
+}
 h1, h2 {
   color: #f8f1f1;
 }
@@ -77,4 +97,9 @@ button {
 
 button:hover {
   background: #3b6dd8;
+}
+.paymenttext{
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  font-family: unset;
 }
