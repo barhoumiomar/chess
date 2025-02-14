@@ -70,16 +70,16 @@ app.post("/api/auth/login", async (req, res) => {
 // Membership Route to Save User Membership Data
 app.post("/api/membership", async (req, res) => {
   try {
-    console.log(req.body); // Log the received data from the frontend
+    console.log(req.body); 
 
     const { fullName, email, phone, plan, cardNumber, expiryDate, cvv, username } = req.body;
 
-    // Ensure all required fields are present
+    
     if (!fullName || !email || !phone || !plan || !cardNumber || !expiryDate || !cvv || !username) {
       return res.status(400).json({ message: "All fields are required!" });
     }
 
-    // Process the membership as usual
+    
     const user = await User.findOne({ username });
     if (!user) {
       return res.status(404).json({ message: "User not found!" });
@@ -109,10 +109,12 @@ app.post("/api/membership", async (req, res) => {
   }
 });
 
-
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
 
 // Start Server
-const PORT = process.env.PORT || 5000;  // Use a different port
+const PORT = process.env.PORT || 5000;  
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

@@ -10,7 +10,7 @@ const Membership = () => {
     cardNumber: "",
     expiryDate: "",
     cvv: "",
-    username: "", // Add username here
+    username: "", 
   });
   
 
@@ -21,7 +21,7 @@ const Membership = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    console.log(formData); // Log formData to verify fields before submitting
+    console.log(formData);
   
     try {
       const response = await fetch("http://localhost:5000/api/membership", {
@@ -34,9 +34,9 @@ const Membership = () => {
       
       const data = await response.json();
       if (response.ok) {
-        alert(data.message); // Membership request successful
+        alert(data.message);
       } else {
-        alert(data.message); // Error message
+        alert(data.message); 
       }
     } catch (err) {
       console.error(err);
