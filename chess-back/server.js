@@ -5,14 +5,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
-
 const app = express();
 app.use(express.json());
 app.use(cors()); // Allow frontend requests
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, {  })
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
@@ -22,7 +21,20 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
+// Membership Schema
+const MembershipSchema = new mongoose.Schema({
+  fullName: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  plan: { type: String, required: true },
+  cardNumber: { type: String, required: true },
+  expiryDate: { type: String, required: true },
+  cvv: { type: String, required: true },
+  joinedAt: { type: Date, default: Date.now },
+});
+
 const User = mongoose.model("User", UserSchema);
+const Membership = mongoose.model("Membership", MembershipSchema);
 
 // Signup Route
 app.post("/api/auth/signup", async (req, res) => {
@@ -43,7 +55,7 @@ app.post("/api/auth/login", async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    
+
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
@@ -55,9 +67,52 @@ app.post("/api/auth/login", async (req, res) => {
   }
 });
 
+// Membership Route to Save User Membership Data
+app.post("/api/membership", async (req, res) => {
+  try {
+    console.log(req.body); // Log the received data from the frontend
+
+    const { fullName, email, phone, plan, cardNumber, expiryDate, cvv, username } = req.body;
+
+    // Ensure all required fields are present
+    if (!fullName || !email || !phone || !plan || !cardNumber || !expiryDate || !cvv || !username) {
+      return res.status(400).json({ message: "All fields are required!" });
+    }
+
+    // Process the membership as usual
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ message: "User not found!" });
+    }
+
+    if (plan === "premium") {
+      user.isPremium = true;
+      await user.save();
+    }
+
+    const newMembership = new Membership({
+      user: user._id,
+      fullName,
+      email,
+      phone,
+      plan,
+      cardNumber,
+      expiryDate,
+      cvv,
+    });
+
+    await newMembership.save();
+    res.json({ message: "Membership request submitted successfully!" });
+  } catch (err) {
+    console.error("Error in membership route:", err);
+    res.status(400).json({ message: "Failed to submit membership request" });
+  }
+});
+
+
 
 // Start Server
 const PORT = process.env.PORT || 5000;  // Use a different port
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

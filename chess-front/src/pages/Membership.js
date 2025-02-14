@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Membership.css"; 
+import "./Membership.css";
 
 const Membership = () => {
   const [formData, setFormData] = useState({
@@ -10,16 +10,40 @@ const Membership = () => {
     cardNumber: "",
     expiryDate: "",
     cvv: "",
+    username: "", // Add username here
   });
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Membership request submitted successfully!");
+    
+    console.log(formData); // Log formData to verify fields before submitting
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/membership", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message); // Membership request successful
+      } else {
+        alert(data.message); // Error message
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting membership.");
+    }
   };
+  
 
   return (
     <div className="membership-container">
@@ -37,34 +61,44 @@ const Membership = () => {
 
       <h2>Upgrade to Premium</h2>
       <form onSubmit={handleSubmit} className="membership-form">
+      <label>Username</label>
+      <input
+        type="text"
+        name="username"
+        placeholder="Enter your username"
+        value={formData.username}
+        onChange={handleChange}
+        required
+      />
+
         <label>Full Name</label>
-        <input 
-          type="text" 
-          name="fullName" 
-          placeholder="Enter your full name" 
-          value={formData.fullName} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="text"
+          name="fullName"
+          placeholder="Enter your full name"
+          value={formData.fullName}
+          onChange={handleChange}
+          required
         />
 
         <label>Email</label>
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="Enter your email address" 
-          value={formData.email} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email address"
+          value={formData.email}
+          onChange={handleChange}
+          required
         />
 
         <label>Phone Number</label>
-        <input 
-          type="tel" 
-          name="phone" 
-          placeholder="Enter your phone number" 
-          value={formData.phone} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Enter your phone number"
+          value={formData.phone}
+          onChange={handleChange}
+          required
         />
 
         <label>Select Plan</label>
@@ -75,36 +109,36 @@ const Membership = () => {
 
         <h4 className="paymenttext">Payment Details</h4>
         <label>Card Number</label>
-        <input 
-          type="text" 
-          name="cardNumber" 
-          placeholder="Enter your card number" 
-          value={formData.cardNumber} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="text"
+          name="cardNumber"
+          placeholder="Enter your card number"
+          value={formData.cardNumber}
+          onChange={handleChange}
+          required
         />
 
         <div className="row">
           <div>
             <label>Expiry Date</label>
-            <input 
-              type="text" 
-              name="expiryDate" 
-              placeholder="MM/YY" 
-              value={formData.expiryDate} 
-              onChange={handleChange} 
-              required 
+            <input
+              type="text"
+              name="expiryDate"
+              placeholder="MM/YY"
+              value={formData.expiryDate}
+              onChange={handleChange}
+              required
             />
           </div>
           <div>
             <label>CVV</label>
-            <input 
-              type="text" 
-              name="cvv" 
-              placeholder="CVV" 
-              value={formData.cvv} 
-              onChange={handleChange} 
-              required 
+            <input
+              type="text"
+              name="cvv"
+              placeholder="CVV"
+              value={formData.cvv}
+              onChange={handleChange}
+              required
             />
           </div>
         </div>
