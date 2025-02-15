@@ -42,6 +42,7 @@ const User = mongoose.model("User", UserSchema);
 const Membership = mongoose.model("Membership", MembershipSchema);
 
 // Signup Route
+// Signup Route
 app.post("/api/auth/signup", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -49,11 +50,15 @@ app.post("/api/auth/signup", async (req, res) => {
     const newUser = new User({ username, password: hashedPassword });
     await newUser.save();
 
-    res.json({ message: "User registered successfully" });
+    // Generate a JWT token
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+    res.json({ token });
   } catch (err) {
     res.status(400).json({ message: "Signup failed" });
   }
 });
+
 
 // Login Route
 app.post("/api/auth/login", async (req, res) => {
