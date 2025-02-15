@@ -40,15 +40,20 @@ const handleLogin = async (e) => {
   }
 
   try {
-    const res = await axios.post("http://localhost:5000/api/auth/login", {
+    // Replace with the actual backend URL
+    const res = await axios.post("https://chessclub-ut2o.onrender.com/api/auth/login", {
       username,
       password,
     });
 
+    // Store the token and user data in localStorage
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("user", JSON.stringify({ username }));
 
+    // Call the onLogin function passed via props
     onLogin({ username });
+
+    // Navigate to the home page
     navigate("/");
   } catch (err) {
     setError(err.response?.data?.message || "Invalid username or password");
@@ -56,6 +61,7 @@ const handleLogin = async (e) => {
     setLoading(false);
   }
 };
+
 
   return (
     <div className="">
