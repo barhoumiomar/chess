@@ -11,36 +11,35 @@ const SignUp = ({ onLogin }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
+  if (password !== confirmPassword) {
+    setError("Passwords do not match");
+    return;
+  }
+
+  try {
+    const res = await axios.post("https://chessclub-ut2o.onrender.com/api/auth/signup", {
+      username,
+      password,
+    });
+
+    if (res.data.token) {
+      localStorage.setItem("token", res.data.token);
     }
 
-    try {
-     const res = await axios.post("https://chessclub-ut2o.onrender.com/api/auth/signup", {
-  username,
-  password,
-});
+    // Show success message after successful signup
+    setSuccessMessage("Signup successful! Redirecting to login...");
 
-
-      if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
-      }
-
-      // Show success message after successful signup
-      setSuccessMessage("Signup successful! Redirecting to login...");
-
-      // Redirect to the HomeGuest page after 2 seconds (for the user to see the success message)
-      setTimeout(() => {
-        navigate("/login"); // Redirect to HomeGuest page
-      }, 2000); // You can adjust the time to your preference
-    } catch (err) {
-      setError(err.response?.data?.message || err.message || "Something went wrong");
-    }
-  };
+    // Redirect to the HomeGuest page after 2 seconds (for the user to see the success message)
+    setTimeout(() => {
+      navigate("/login"); // Redirect to HomeGuest page
+    }, 2000); // You can adjust the time to your preference
+  } catch (err) {
+    setError(err.response?.data?.message || err.message || "Something went wrong");
+  }
+};
 
   return (
     <div className="">
