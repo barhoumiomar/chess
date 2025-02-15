@@ -15,26 +15,25 @@ import Membership from "./pages/Membership";
 import AboutUs from "./pages/AboutUs";
 import Events from "./pages/Events";
 import Watch from "./pages/Watch";
-import "./App.css";
+import "./App.css"; 
 
 function App() {
-  const [showNavbar, setShowNavbar] = useState(false);
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);  // Track the token
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const userData = localStorage.getItem("user");
-
-    if (token && userData) {
-      setUser(JSON.parse(userData));
-      setToken(token);  // Store the token
+    const storedToken = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
+    
+    if (storedToken && storedUser) {
+      setUser(JSON.parse(storedUser));
+      setToken(storedToken);
     }
   }, []);
 
   const handleLogin = (userData, token) => {
     setUser(userData);
-    setToken(token);  // Set token when logging in
+    setToken(token);
     localStorage.setItem("user", JSON.stringify(userData));
     localStorage.setItem("token", token);
   };
@@ -43,30 +42,19 @@ function App() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
-    setToken(null);  // Clear the token on logout
+    setToken(null);
   };
 
   return (
     <Router>
       <div className="app-container">
-        {user && (
-          <div className={`navbar ${showNavbar ? "navbar-open" : ""}`}>
-            <Navbar onClose={() => setShowNavbar(false)} />
-          </div>
-        )}
-
-        {showNavbar && (
-          <div className="overlay" onClick={() => setShowNavbar(false)} />
-        )}
-
+       
+        
         <div className="content">
           <Routes>
-            <Route
-              path="/"
-              element={user ? <Home user={user} /> : <HomeGuest onLogin={handleLogin} />}
-            />
+            <Route path="/" element={user ? <Home user={user} /> : <HomeGuest onLogin={handleLogin} />} />
             <Route path="/lessons" element={<Lessons user={user} />} />
-            <Route path="/Watch" element={<Watch user={user}/>}/>
+            <Route path="/watch" element={<Watch user={user} />} />
             <Route path="/practice" element={<Practice user={user} />} />
             <Route path="/quiz" element={<Quiz user={user} />} />
             <Route path="/memes" element={<Memes user={user} />} />
@@ -74,16 +62,13 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
             
-           
-            {/* footer links */}
+            {/* Footer Links */}
             <Route path="/about" element={<AboutUs />} />
             <Route path="/events" element={<Events />} />
             <Route path="/membership" element={<Membership />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
-
-       
       </div>
     </Router>
   );
