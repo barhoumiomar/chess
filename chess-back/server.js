@@ -7,11 +7,13 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: 'https://chess-ckgw.onrender.com/', // Allow frontend domain
-  methods: ['GET', 'POST'],
-  credentials: true, // Allow cookies if needed
-}));
+app.use(
+  cors({
+    origin: 'https://chess-ckgw.onrender.com',  // Specify your frontend domain here
+    methods: ['GET', 'POST'],
+    credentials: true,  // Allow credentials if needed (cookies, etc.)
+  })
+);
 
 
 // Connect to MongoDB
@@ -41,7 +43,6 @@ const MembershipSchema = new mongoose.Schema({
 const User = mongoose.model("User", UserSchema);
 const Membership = mongoose.model("Membership", MembershipSchema);
 
-// Signup Route
 // Signup Route
 app.post("/api/auth/signup", async (req, res) => {
   try {
