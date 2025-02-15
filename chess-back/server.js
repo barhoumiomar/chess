@@ -110,7 +110,7 @@ app.post("/api/membership", async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello, world!');
+  res.send('API is Running ...');
 });
 
 // Start Server
