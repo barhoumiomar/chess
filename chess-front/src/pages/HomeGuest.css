@@ -24,8 +24,9 @@
   max-width: 500px;
   padding: 13px;
   border-radius: 5px;
-  background-color:transparent;
+  background-color: transparent;
   box-shadow: 0px 4px 8px rgb(5, 255, 180);
+  overflow: hidden; /* Prevent the text from overflowing outside the container */
 }
 
 /* Typing animation effect */
@@ -33,31 +34,32 @@
   font-size: 20px;
   font-weight: bold;
   color: #ffffff;
-  /* margin-bottom: 20px; */
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid #333;
-  width: 3px  ;
-  animation: typing 4s steps(100) 0s forwards, blink-caret 1000ms step-end infinite;
+  width: 0; /* Start with 0 width */
+  animation: typing 4s steps(40) 0s forwards, blink-caret 1000ms step-end infinite;
 }
 
-
-/* Animation for typing effect */
+/* Typing animation keyframes */
 @keyframes typing {
   from {
-    width: 15%;
+    width: 0; /* Start from no width */
   }
   to {
-    width: 28.75rem; /* Adjust based on text length */
+    width: 100%; /* Expand to full width of the container */
   }
 }
 
-/* Blinking caret effect */
+/* Cursor blinking effect */
 @keyframes blink-caret {
-  60% {
+  50% {
     border-color: transparent;
   }
 }
+
+
+
 
 /* Style for the toggle buttons */
 .toggle-button {
