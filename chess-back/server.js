@@ -7,13 +7,12 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: 'https://chess-ckgw.onrender.com',  // Specify your frontend domain here
-    methods: ['GET', 'POST'],
-    credentials: true,  // Allow credentials if needed (cookies, etc.)
-  })
-);
+app.use(cors({
+  origin: '*', // Allow requests from any origin (not recommended for production)
+  methods: ['GET', 'POST'],
+  credentials: true,  // Allow cookies if necessary
+}));
+
 
 
 // Connect to MongoDB
