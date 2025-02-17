@@ -360,6 +360,7 @@ body {
     flex: 1 1 calc(100% - 20px); /* Stacks them vertically on small screens */
   }
 }
+
 .chess-carousel {
   overflow: hidden;
   border-radius: 2%;
@@ -371,8 +372,8 @@ body {
 .chess-images-container {
   border-radius: 15px;
   display: flex;
-  width: 30%;
-  animation: moveCarousel 35s infinite;  /* Total of 75s for 5 images moving every 15s */
+  width: 45%;
+  animation: moveCarousel 100s linear infinite; /* Moves every 3s, loops every 15s */
 }
 
 .chess-image {
@@ -381,21 +382,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 5px;
   position: relative;
-}
-
-.image-caption {
-  position: absolute;
-  bottom: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px 0;
-  margin: 0;
 }
 
 .image {
@@ -407,22 +395,10 @@ body {
 
 /* Keyframes to animate the carousel */
 @keyframes moveCarousel {
-  0% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(-100%);
-  }
-  40% {
-    transform: translateX(-200%);
-  }
-  60% {
-    transform: translateX(-300%);
-  }
-  80% {
-    transform: translateX(-400%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-100%); }
+  40% { transform: translateX(-200%); }
+  60% { transform: translateX(-300%); }
+  80% { transform: translateX(-400%); }
+  100% { transform: translateX(0); } /* Loops back smoothly */
 }
