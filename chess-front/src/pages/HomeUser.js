@@ -47,11 +47,11 @@ const HomeUser = ({ user }) => {
           <p className="section-text">
             Ready to dive into the world of chess? Explore our lessons, practice on the chessboard, and test your skills with quizzes.
           </p>
-          <div className="button-container">
-            <a href="/membership" className="button">Membership</a>
-            <a href="/events" className="button">Events</a>
-            <a href="/about" className="button">About</a> 
-            <a href="/contact" className="button">Contact</a> 
+          <div className="buttons-container">
+            <a href="/membership" className="buttons">Membership</a>
+            <a href="/events" className="buttons">Events</a>
+            <a href="/about" className="buttons">About</a> 
+            <a href="/contact" className="buttons">Contact</a> 
 
           </div>
         </div>
