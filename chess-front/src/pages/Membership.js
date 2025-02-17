@@ -103,8 +103,8 @@ const Membership = () => {
 
         <label>Select Plan</label>
         <select name="plan" value={formData.plan} onChange={handleChange}>
-          <option value="premium">Premium - $10/month</option>
-          <option value="pro">Pro - $20/month</option>
+          <option value="premium">Premium - 10Dt/month</option>
+          <option value="pro">Pro - 20Dt/month</option>
         </select>
 
         <h4 className="paymenttext">Payment Details</h4>
