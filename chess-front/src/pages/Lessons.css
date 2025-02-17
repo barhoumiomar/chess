@@ -1,4 +1,5 @@
-.verify{
+/* General Styles */
+.verify {
   color: red;
   font-size: 45px;
   margin-top: 250px;
@@ -17,16 +18,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
-  
-
+  justify-content: center;
 }
 
 .title {
   font-size: 48px;
   color: #ffffff;
   margin-bottom: 100px;
-  font-family: 'Georgia', serif; 
+  font-family: 'Georgia', serif;
   margin-top: 120px;
 }
 
@@ -55,6 +54,10 @@
   font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.lessonButton:hover {
+  background-color: #000550;
 }
 
 .lessonContent {
@@ -88,10 +91,10 @@
 .chessboardAndDescriptionContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers content horizontally */
-  justify-content: center; /* Centers content vertically */
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
-  height: 450px; /* Or you can adjust the height based on the content */
+  height: auto; /* Adjusted to auto for responsiveness */
 }
 
 .chessboardContainer {
@@ -100,6 +103,113 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  height: 400px; /* You can adjust the height as per your preference */ 
-  
+  height: auto; /* Adjusted to auto for responsiveness */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .verify {
+    font-size: 40px;
+    margin-left: 200px;
+  }
+
+  .title {
+    font-size: 40px;
+    margin-top: 80px;
+    margin-bottom: 60px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .lessonButton {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .lessonTitle {
+    font-size: 42px;
+  }
+
+  .lessonDescription {
+    font-size: 16px;
+    margin-top: 60px;
+  }
+
+  .chessboardContainer {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .verify {
+    font-size: 32px;
+    margin-left: 100px;
+    margin-top: 150px;
+  }
+
+  .title {
+    font-size: 32px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .lessonButton {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .lessonTitle {
+    font-size: 36px;
+  }
+
+  .lessonDescription {
+    font-size: 14px;
+    margin-top: 40px;
+  }
+
+  .chessboardContainer {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .verify {
+    font-size: 24px;
+    margin-left: 50px;
+    margin-top: 100px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .lessonButton {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .lessonTitle {
+    font-size: 28px;
+  }
+
+  .lessonDescription {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  .chessboardContainer {
+    margin-bottom: 20px;
+  }
 }
