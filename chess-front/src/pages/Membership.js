@@ -55,8 +55,8 @@ const Membership = () => {
       <h2>Membership Plans</h2>
       <ul className="membership-list">
         <li><strong>Basic Plan:</strong> Free access to online resources and forums.</li>
-        <li><strong>Premium Plan:</strong> $10/month - Access to all events, training sessions, and exclusive content.</li>
-        <li><strong>Pro Plan:</strong> $20/month - All Premium benefits plus one-on-one coaching sessions.</li>
+        <li><strong>Premium Plan:</strong> 10Dt/month - Access to all events, training sessions, and exclusive content.</li>
+        <li><strong>Pro Plan:</strong> 20Dt/month - All Premium benefits plus one-on-one coaching sessions.</li>
       </ul>
 
       <h2>Upgrade to Premium</h2>
