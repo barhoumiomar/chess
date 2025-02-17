@@ -1,3 +1,4 @@
+/* General Styles */
 .practice-container {
   margin-top: 50px;
   display: flex;
@@ -6,6 +7,8 @@
   justify-content: center;
   min-height: 100vh;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .practice-title {
@@ -22,6 +25,8 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px; /* Limit maximum width for larger screens */
 }
 
 .status-message {
@@ -101,4 +106,65 @@
 
 .reset-button:hover {
   background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .practice-title {
+    font-size: 28px;
+  }
+
+  .chessboard-wrapper {
+    padding: 15px;
+    max-width: 380px; /* Adjust for medium screens */
+  }
+
+  .status-message {
+    font-size: 18px;
+  }
+
+  .turn-text {
+    font-size: 16px;
+  }
+
+  .win-text,
+  .lose-text,
+  .draw-text {
+    font-size: 22px;
+  }
+
+  .reset-button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .practice-title {
+    font-size: 24px;
+  }
+
+  .chessboard-wrapper {
+    padding: 10px;
+    max-width: 320px; /* Adjust for small screens */
+  }
+
+  .status-message {
+    font-size: 16px;
+  }
+
+  .turn-text {
+    font-size: 14px;
+  }
+
+  .win-text,
+  .lose-text,
+  .draw-text {
+    font-size: 20px;
+  }
+
+  .reset-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
 }
