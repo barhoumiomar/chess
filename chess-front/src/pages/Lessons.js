@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
-import "./Lessons.css"; 
+import "./Lessons.css";
 
-const Lessons = ({user}) => {
+const Lessons = ({ user }) => {
   const [currentLesson, setCurrentLesson] = useState(null);
+
   if (!user) {
-    return <div className="verify">Please log in to access this page. <a href="/">login here</a></div>;
+    return (
+      <div className="verify">
+        Please log in to access this page. <a href="/">login here</a>
+      </div>
+    );
   }
+
   // Lessons data
   const lessons = [
     {
@@ -28,7 +34,7 @@ const Lessons = ({user}) => {
         It can move any number of squares in a straight line, making it especially strong in open positions. 
         The rook is also involved in castling, a special move that helps protect the king.
       `,
-      fen: "r6r/8/8/8/8/8/8/R6R w KQkq - 0 1", 
+      fen: "r6r/8/8/8/8/8/8/R6R w KQkq - 0 1",
     },
     {
       id: 3,
@@ -77,7 +83,7 @@ const Lessons = ({user}) => {
   };
 
   return (
-    <div className="">
+    <div className="lessonsContainer">
       <h1 className="title">Chess Lessons</h1>
       <p className="subtitle">Learn how each chess piece moves.</p>
       <div className="lessonList">
@@ -92,25 +98,23 @@ const Lessons = ({user}) => {
         ))}
       </div>
       {currentLesson && (
-  <div className="lessonContent">
-    <h2 className="lessonTitle">{currentLesson.title}</h2>
-    <div className="chessboardAndDescriptionContainer">
-      <p className="lessonDescription">{currentLesson.description}</p>
-      <div className="chessboardContainer">
-        <Chessboard
-          position={currentLesson.fen}
-          boardWidth={310} // Medium-sized chessboard
-          boardStyle={{
-            borderRadius: "5px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-          }}
-        />
-      </div>
-    </div>
-  </div>
-  
-)}
-
+        <div className="lessonContent">
+          <h2 className="lessonTitle">{currentLesson.title}</h2>
+          <div className="chessboardAndDescriptionContainer">
+            <p className="lessonDescription">{currentLesson.description}</p>
+            <div className="chessboardContainer">
+              <Chessboard
+                position={currentLesson.fen}
+                boardWidth={310} // Medium-sized chessboard
+                boardStyle={{
+                  borderRadius: "5px",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
