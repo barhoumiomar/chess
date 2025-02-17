@@ -78,28 +78,47 @@ body {
 }
 
 /* Buttons */
-.button-container {
+.buttons-container {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   margin-top: 15px;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers buttons on small screens */
 }
 
-.button {
-  padding: 20px 30px;
+.buttons {
+  padding: 10px 15px;
   background: #ff5733;
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
   text-decoration: none;
   border-radius: 8px;
   transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  flex: 1; /* Makes buttons flexible */
+  min-width: 120px; /* Ensures buttons don't get too small */
+  max-width: 200px; /* Prevents buttons from being too large */
 }
 
-.button:hover {
+.buttons:hover {
   background: linear-gradient(90deg, #ffcc00, #ff5733);
   transform: scale(1.08);
   box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
 }
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .buttons-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .buttons {
+    width: 100%; /* Makes buttons full width on small screens */
+  }
+}
+
 
 /* Chess Series List */
 .list {
