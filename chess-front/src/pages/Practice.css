@@ -1,81 +1,38 @@
-/* General Styles */
 .practice-container {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  text-align: center;
   padding: 20px;
-  box-sizing: border-box;
+  text-align: center;
 }
 
 .practice-title {
-  font-size: 32px;
+  font-size: 2rem;
   margin-bottom: 20px;
-  color: #fff3f3;
-  margin-left: 20px;
-}
-@media (max-width: 480px) {
-  .chessboard-wrapper {
-    padding: 3vw;
-    width: 95vw; 
-    max-width: 320px; 
-  }
 }
 
 .chessboard-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 420px; /* Limit maximum width for larger screens */
+  max-width: 380px; /* Limit the maximum width */
+  margin: 0 auto;
 }
 
 .status-message {
-  margin-top: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
 }
 
 .turn-text {
-  padding: 10px;
-  font-size: 18px;
   font-weight: bold;
-  border-radius: 5px;
-  display: inline-block;
-  transition: all 0.3s ease-in-out;
 }
 
 .computer-turn {
-  color: white;
-  background-color: #ff6b6b;
-  animation: pulse 1s infinite alternate;
+  color: #ff4d4d; /* Red for computer's turn */
 }
 
 .player-turn {
-  color: white;
-  background-color: #4caf50;
-  animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-  from {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  to {
-    transform: scale(1.05);
-    opacity: 1;
-  }
+  color: #4d79ff; /* Blue for player's turn */
 }
 
 .result-container {
@@ -83,96 +40,48 @@
 }
 
 .win-text {
-  color: #4caf50;
-  font-size: 24px;
-  font-weight: bold;
+  color: green;
 }
 
 .lose-text {
-  color: #ff6b6b;
-  font-size: 24px;
-  font-weight: bold;
+  color: red;
 }
 
 .draw-text {
-  color: #ff9800;
-  font-size: 24px;
-  font-weight: bold;
+  color: orange;
 }
 
 .reset-button {
   margin-top: 10px;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 1rem;
   color: white;
-  background-color: #007bff;
+  background-color: #4d79ff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
 }
 
 .reset-button:hover {
-  background-color: #0056b3;
+  background-color: #3a5bbf;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .practice-title {
-    font-size: 28px;
-  }
-
-  .chessboard-wrapper {
-    padding: 15px;
-    max-width: 380px; /* Adjust for medium screens */
-  }
-
-  .status-message {
-    font-size: 18px;
-  }
-
-  .turn-text {
-    font-size: 16px;
-  }
-
-  .win-text,
-  .lose-text,
-  .draw-text {
-    font-size: 22px;
-  }
-
-  .reset-button {
-    font-size: 16px;
-    padding: 8px 16px;
-  }
-}
-
+/* Responsive Design for Smartphones */
 @media (max-width: 480px) {
   .practice-title {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .chessboard-wrapper {
-    padding: 10px;
-    max-width: 320px; /* Adjust for small screens */
+    max-width: 90%; /* Make the chessboard smaller on small screens */
   }
 
   .status-message {
-    font-size: 16px;
-  }
-
-  .turn-text {
-    font-size: 14px;
-  }
-
-  .win-text,
-  .lose-text,
-  .draw-text {
-    font-size: 20px;
+    font-size: 1rem;
   }
 
   .reset-button {
-    font-size: 14px;
-    padding: 6px 12px;
+    font-size: 0.9rem;
+    padding: 8px 16px;
   }
 }
