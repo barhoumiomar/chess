@@ -12,7 +12,7 @@ const Navbar = ({ onClose }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-gradient shadow-sm p-3">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-gradient shadow-sm p-1">
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold text-uppercase" to="/">
           ChessClub ♔♕♖♗♘♙
