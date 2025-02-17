@@ -77,6 +77,20 @@ const Practice = ({user}) => {
     }
   };
 
+  const [boardWidth, setBoardWidth] = useState(380);
+
+useEffect(() => {
+  const handleResize = () => {
+    const newWidth = window.innerWidth * 0.8; // 80% of the viewport width
+    setBoardWidth(Math.min(newWidth, 380)); // Limit to a maximum of 380px
+  };
+
+  window.addEventListener("resize", handleResize);
+  handleResize(); // Set initial width
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
   if (!user) {
     return <div className="verify">Please log in to access this page. <a href="/">login here</a></div>;
   }
@@ -85,17 +99,17 @@ const Practice = ({user}) => {
       <h1 className="practice-title">Practice Chess</h1>
       
       <div className="chessboard-wrapper">
-        <Chessboard
-          position={game.fen()}
-          onPieceDrop={onDrop}
-          onSquareClick={onSquareClick}
-          customSquareStyles={customSquareStyles}
-          boardWidth={380}
-          boardStyle={{
-            borderRadius: "10px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-          }}
-        />
+      <Chessboard
+  position={game.fen()}
+  onPieceDrop={onDrop}
+  onSquareClick={onSquareClick}
+  customSquareStyles={customSquareStyles}
+  boardWidth={boardWidth} // Dynamic width
+  boardStyle={{
+    borderRadius: "10px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+  }}
+/>
       </div>
 
       <div className="status-message">
