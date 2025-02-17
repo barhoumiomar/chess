@@ -8,19 +8,7 @@ const HomeUser = ({ user }) => {
     setShowMore(!showMore);
   };
 
-  // Sample list of famous players and their careers
-  const topPlayers = [
-    { name: "Magnus Carlsen", career: "World Champion since 2013, Grandmaster" },
-    { name: "Garry Kasparov", career: "Former World Champion, Grandmaster" },
-    { name: "Bobby Fischer", career: "World Champion 1972, Grandmaster" },
-    { name: "Anatoly Karpov", career: "World Champion 1975–1985, Grandmaster" },
-    { name: "Hikaru Nakamura", career: "Top player in Bullet Chess, Grandmaster" },
-    { name: "Viswanathan Anand", career: "World Champion 2000–2002, Grandmaster" },
-    { name: "Levon Aronian", career: "Top 5 player, Grandmaster" },
-    { name: "Wang Hao", career: "Top Chinese player, Grandmaster" },
-    { name: "Ding Liren", career: "Top Chinese player, World Championship contender" },
-    { name: "Fabiano Caruana", career: "World Championship contender, Grandmaster" },
-  ];
+  
 
   // Upcoming events
   const upcomingEvents = [
@@ -46,31 +34,8 @@ const HomeUser = ({ user }) => {
 
   return (
     <div className="home-user-container">
-      {/* Left Sidebar */}
-      
-      <div className="left-sidebar">
-        <div className="sidebar-section">
-          <h2 className="sidebar-title">Upcoming Events</h2>
-          <ul className="events-list">
-            {upcomingEvents.map((event, index) => (
-              <li key={index} className="event-item">
-                <strong>{event.name}</strong> - {event.date}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="sidebar-section">
-          <h2 className="sidebar-title">Latest Chess News</h2>
-          <ul className="news-list">
-            <li><a href="https://www.chess.com/news/view/latest-chess-news" className="news-link">Latest News</a></li>
-            <li><a href="https://www.chess.com/news/view/famous-chess-games" className="news-link">Famous Games</a></li>
-            <li><a href="https://www.chess.com/news/view/chess-tournaments" className="news-link">Upcoming Tournaments</a></li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Main Content (Center) */}
-      <div className="main-content">
+       {/* Main Content (Center) */}
+       <div className="main-content">
       <h2 className="greeting">
   {greeting} <span className="username">{user.username}</span>!
 </h2>
@@ -118,38 +83,41 @@ const HomeUser = ({ user }) => {
         </div>
         
       </div>
-        
-      {/* Right Sidebar */}
-      <div className="right-sidebar">
+
+
+      {/* Left Sidebar */}
+      
+      <div className="left-sidebar">
         <div className="sidebar-section">
-          <h2 className="sidebar-title">Discover Famous Chess Players</h2>
-          <ul className="player-list">
-            {topPlayers.map((player, index) => (
-              <li key={index} className="player-item">
-                <strong>
-                  <a
-                    href={`https://en.wikipedia.org/wiki/${player.name.replace(" ", "_")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="player-link"
-                  >
-                    {player.name}
-                  </a>
-                </strong> - {player.career}
+          <h2 className="sidebar-title">Upcoming Events</h2>
+          <ul className="events-list">
+            {upcomingEvents.map((event, index) => (
+              <li key={index} className="event-item">
+                <strong>{event.name}</strong> - {event.date}
               </li>
             ))}
           </ul>
         </div>
-        
+        <div className="sidebar-section">
+          <h2 className="sidebar-title">Latest Chess News</h2>
+          <ul className="news-list">
+            <li><a href="https://www.chess.com/news/view/latest-chess-news" className="news-link">Latest News</a></li>
+            <li><a href="https://www.chess.com/news/view/famous-chess-games" className="news-link">Famous Games</a></li>
+            <li><a href="https://www.chess.com/news/view/chess-tournaments" className="news-link">Upcoming Tournaments</a></li>
+          </ul>
+        </div>
       </div>
+
+     
+        
+    
       
       {/* Chess Images Section */}
 <div className="chess-carousel">
-<h2 className="section-title">this is what you need to learn about chess</h2>
+<h1 className="section-title"> discover chess </h1>
 
   <div className="chess-images-container">
     <div className="chess-image">
-      <p className="image-caption">Famous chess openings</p>
       <img
         src="https://i1.wp.com/chesspathways.com/wp-content/uploads/2019/08/1a-300x300.png?ssl=1"
         alt="Chess Board"
@@ -157,7 +125,6 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption">How to checkmate only with two bishops</p>
       <img
         src="https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/phpsOI19f.png"
         alt="Chess Pieces"
@@ -165,7 +132,6 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption">4 Move Checkmate: How to Win Chess in 4 Moves</p>
       <img
         src="https://herculeschess.com/wp-content/uploads/2020/04/bc4.png"
         alt="Chess Strategy"
@@ -173,7 +139,6 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption"> 10 Brutal Chess Tactics For Beginners </p>
       <img
         src="https://files.herculeschess.com/file/herculeschess/2020/04/fried-300x298.png"
         alt="Chess Strategy"
@@ -181,7 +146,6 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption">beautiful trap </p>
       <img
         src="https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/phpRA1aXs.png"
         alt="Chess Strategy"
@@ -189,7 +153,6 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption">nice trap </p>
       <img
         src="https://files.herculeschess.com/file/herculeschess/2020/04/Picture8-300x300.png"
         alt="Chess Strategy"
@@ -197,7 +160,6 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption">threatening king and rook </p>
       <img
         src="https://thechessworld.com/wp-content/uploads/2020/12/fork-300x300.jpg"
         alt="Chess Strategy"
@@ -205,7 +167,7 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption">free queen</p>
+  
       <img
         src="https://chesseasy.com/wp-content/uploads/2022/01/10.jpeg"
         alt="Chess Strategy"
@@ -213,7 +175,6 @@ const HomeUser = ({ user }) => {
       />
     </div>
     <div className="chess-image">
-      <p className="image-caption"> beautiful fork</p>
       <img
         src="https://chesspuzzle.net/Images/Blog/medium/GcArrows.png"
         alt="Chess Strategy"
@@ -226,7 +187,7 @@ const HomeUser = ({ user }) => {
 
       {/* Articles Section */}
 <div className="section articles-section">
-  
+  <h1> explore </h1>
   <div className="article-container">
     {/* Article 1 */}
     <div className="article">
