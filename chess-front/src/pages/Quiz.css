@@ -1,11 +1,14 @@
+/* General Styles */
 .quiz-container {
-  margin-top: 50px;
+  margin-top: -20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .quiz-title {
@@ -41,64 +44,8 @@
   margin-left: 20px;
   display: flex;
   justify-content: center; /* Horizontally center */
-  align-items: center;     /* Vertically center */
-  height: 400px;           /* Ensure the container has enough height */
+  align-items: center; /* Vertically center */
+  height: 400px; /* Ensure the container has enough height */
   margin-bottom: 20px;
 }
 
-.feedback {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: #d9534f;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.button {
-  padding: 6px 12px;  /* Reduced padding */
-  background-color: #5bc0de;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 14px;  /* Smaller font size */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #31b0d5;
-}
-
-.button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-}
-.feedback.success {
-  color: green;
-}
-
-.feedback.error {
-  color: red;
-}
-
-.timer-container {
-  font-size: 18px;
-  margin-top: 10px;
-  font-weight: bold;
-}
