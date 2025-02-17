@@ -24,7 +24,7 @@ const Membership = () => {
     console.log(formData);
   
     try {
-      const response = await fetch("http://localhost:5000/api/membership", {
+      const response = await fetch("https://chessclub-ut2o.onrender.com/api/membership", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
