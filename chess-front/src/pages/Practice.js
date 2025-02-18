@@ -26,15 +26,30 @@ const Practice = ({user}) => {
   };
 
   const onDrop = (sourceSquare, targetSquare) => {
-    const move = game.move({ from: sourceSquare, to: targetSquare, promotion: "q" });
-    if (move === null) return false;
-
-    setGame(new Chess(game.fen()));
-    setIsComputerTurn(true);
-    checkGameResult();
-    setSelectedSquare(null);
-    setValidMoves([]);
-    return true;
+    try {
+      const move = game.move({
+        from: sourceSquare,
+        to: targetSquare,
+        promotion: "q", // Automatically promote to queen if applicable
+      });
+  
+      if (move === null) {
+        // Invalid move, return the piece to its original position
+        return false;
+      }
+  
+      // Update the game state
+      setGame(new Chess(game.fen()));
+      setIsComputerTurn(true);
+      checkGameResult();
+      setSelectedSquare(null);
+      setValidMoves([]);
+      return true;
+    } catch (error) {
+      // Handle any errors (e.g., invalid move)
+      console.error("Invalid move:", error);
+      return false; // Return the piece to its original position
+    }
   };
 
   const checkGameResult = () => {
